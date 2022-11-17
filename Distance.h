@@ -8,11 +8,10 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #ifndef VECTORARITHMETIC_H_
 #define VECTORARITHMETIC_H_
 # include <vector>
-double euclideanDistance;
-double manhattanDistance;
-double chebyshevDistance;
-double canberraDistance;
-double minkowskiDistance;
-
+void euclideanDistance(vector <double> v1, vector <double> v2);
+void manhattanDistance(vector <double> v1, vector <double> v2);
+void chebyshevDistance(vector <double> v1, vector <double> v2);
+void canberraDistance(vector <double> v1, vector <double> v2);
+void minkowskiDistance(vector <double> v1, vector <double> v2, int p);
 
 #endif
