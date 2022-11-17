@@ -80,7 +80,7 @@ void canberraDistance(vector <double> v1, vector <double> v2) {
 * ******************/
 void minkowskiDistance(vector <double> v1, vector <double> v2, int p) {
     vector <double> v3 = subtractVectors(v1,v2);
-    v3 = multVector(v3,p);
+    v3 = powVector(v3,p);
     double sum = sumVector(v3);
     cout << sqrt(sum);
 }
