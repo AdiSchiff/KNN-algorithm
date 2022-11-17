@@ -18,10 +18,7 @@ using namespace std;
 * for ellaboration: https://en.wikipedia.org/wiki/Euclidean_distance
 * ******************/
 void euclideanDistance(vector <double> v1, vector <double> v2) {
-    vector <double> v3 = subtractVectors(v1,v2);
-    v3 = multVector(v3);
-    double sum = sumVector(v3);
-    cout << sqrt(sum);
+    minkowskiDistance(v1,v2,2);
 }
 
 /******************
@@ -75,12 +72,15 @@ void canberraDistance(vector <double> v1, vector <double> v2) {
 
 /******************
 * Function Name: minkowskiDistance
-* Input: 2 vectors
+* Input: 2 vectors and an int for the pow
 * Output: print the minkowski distance between the vectors
 * Function Operation:calculating the euclidean distance between two vectors
 * acording to: D(X,Y)=(sum_{i=1}^{n} |x_{i} - y_{i}|^{p})^{\1/p}
 * for ellaboration: https://en.wikipedia.org/wiki/Minkowski_distance
 * ******************/
-void minkowskiDistance(vector <double> v1, vector <double> v2) {
-
+void minkowskiDistance(vector <double> v1, vector <double> v2, int p) {
+    vector <double> v3 = subtractVectors(v1,v2);
+    v3 = multVector(v3,p);
+    double sum = sumVector(v3);
+    cout << sqrt(sum);
 }
