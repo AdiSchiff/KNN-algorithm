@@ -7,7 +7,8 @@ https://github.com/AdiSchiff/Idit-Adi.git
 
 #ifndef VECTORARITHMETIC_H_
 #define VECTORARITHMETIC_H_
-# include <vector>
+#include <vector>
+#include "VectorArithmetic.h"
 void euclideanDistance(vector <double> v1, vector <double> v2);
 void manhattanDistance(vector <double> v1, vector <double> v2);
 void chebyshevDistance(vector <double> v1, vector <double> v2);

@@ -7,6 +7,8 @@ https://github.com/AdiSchiff/Idit-Adi.git
 
 #include <vector>
 #include <cmath>
+#include "Distance.h"
+#include "VectorArithmetic.h"
 using namespace std;
 
 /******************
