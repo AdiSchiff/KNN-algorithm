@@ -82,7 +82,7 @@ double sumVector( vector <double> vector){
     return sum;
 }
 
-vector <double> absoluteValuetVector(vector <double> vector){
+vector <double> absoluteValueVector(vector <double> vector){
         int i;
 
     for(i=0; i<vector.size(); i++){
@@ -93,12 +93,12 @@ vector <double> absoluteValuetVector(vector <double> vector){
 
  /******************
 
-Function Name:maxtValueVector
+Function Name:maxValueVector
 Input: vector<double> vector
 Output:double maxValue
 Function Operation:return the max
 ******************/
-double maxtValueVector( vector <double> vector){
+double maxValueVector( vector <double> vector){
     //Sets the maximum to be the first value in the vector
     double maxValue= vector.at(0);
     int i;
@@ -115,11 +115,11 @@ double maxtValueVector( vector <double> vector){
 Function Name:divisionVectors
 Input: vector<double> vector
 Output: vector<double> divided vector
-Function Operation:new vector with the divid values from vector1+vector2
+Function Operation:new vector with the divide values from vector1+vector2
 ******************/
 
 vector <double> divisionVectors( vector <double> vector1,vector <double> vector2 ){
-    vector<double> dividVec;
+    vector<double> divideVec;
     //both if the vectors have the same size
     int vectorsSize=vector1.size();
     int i;
