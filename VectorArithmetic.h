@@ -9,9 +9,10 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #define VECTORARITHMETIC_H_
 #include <vector>
 
+using namespace std;
 vector <double> addVectors( vector <double> vector1,vector <double> vector2 );
 vector <double> subtractVectors( vector <double> vector1,vector <double> vector2 );
-vector <double> multVector( vector <double> vector);
+vector <double> powVector( vector <double> vector, int power);
 double sumVector( vector <double> vector);
 vector <double> absoluteValuetVector( vector <double> vector);
 double maxtValueVector( vector <double> vector);
