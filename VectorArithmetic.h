@@ -13,7 +13,7 @@ vector <double> addVectors( vector <double> vector1,vector <double> vector2 );
 vector <double> subtractVectors( vector <double> vector1,vector <double> vector2 );
 vector <double> powVector( vector <double> vector, int power);
 double sumVector( vector <double> vector);
-vector <double> absoluteValuetVector( vector <double> vector);
+vector <double> absoluteValueVector( vector <double> vector);
 double maxValueVector( vector <double> vector);
 vector <double> divisionVectors( vector <double> vector1,vector <double> vector2 );
 

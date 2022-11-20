@@ -3,7 +3,6 @@
     "files.associations": {
         "vector": "cpp",
         "cmath": "cpp",
-        // "VectorArithmethc": "h"
     },
     "files.autoSave": "onFocusChange",
     "editor.quickSuggestions": {
