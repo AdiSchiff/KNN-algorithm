@@ -5,14 +5,18 @@ Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
 */
 
-#ifndef VECTORARITHMETIC_H_
-#define VECTORARITHMETIC_H_
+#ifndef DISTANCE_H_
+#define DISTANCE_H_
+#include <vector>
+#include <iostream>
+#include <cmath>
 #include <vector>
 #include "VectorArithmetic.h"
-void euclideanDistance(vector <double> v1, vector <double> v2);
-void manhattanDistance(vector <double> v1, vector <double> v2);
-void chebyshevDistance(vector <double> v1, vector <double> v2);
-void canberraDistance(vector <double> v1, vector <double> v2);
-void minkowskiDistance(vector <double> v1, vector <double> v2, int p);
+using namespace std;
+double euclideanDistance(vector <double> v1, vector <double> v2);
+double manhattanDistance(vector <double> v1, vector <double> v2);
+double chebyshevDistance(vector <double> v1, vector <double> v2);
+double canberraDistance(vector <double> v1, vector <double> v2);
+double minkowskiDistance(vector <double> v1, vector <double> v2, int p);
 
 #endif

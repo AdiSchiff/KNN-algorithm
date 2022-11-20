@@ -9,6 +9,7 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <cmath>
 #include "Distance.h"
 #include "VectorArithmetic.h"
+#include <iostream>
 using namespace std;
 
 /******************
@@ -19,8 +20,8 @@ using namespace std;
 * acording to: d(p,q)={sqrt {(p-q)^{2}}}
 * for ellaboration: https://en.wikipedia.org/wiki/Euclidean_distance
 * ******************/
-void euclideanDistance(vector <double> v1, vector <double> v2) {
-    minkowskiDistance(v1,v2,2);
+double euclideanDistance(vector<double> v1, vector<double> v2) {
+    return minkowskiDistance(v1,v2,2);
 }
 
 /******************
@@ -31,11 +32,11 @@ void euclideanDistance(vector <double> v1, vector <double> v2) {
 * acording to: d(p,q)=|p-q|=sum_{i=1}^{n} |p_{i} - q_{i}|
 * for ellaboration: https://en.wikipedia.org/wiki/Taxicab_geometry
 * ******************/
-void manhattanDistance(vector <double> v1, vector <double> v2) {
+double manhattanDistance(vector <double> v1, vector <double> v2) {
     vector <double> v3 = subtractVectors(v1,v2);
-    v3 = absoluteValuetVector(v3);
+    v3 = absoluteValueVector(v3);
     double sum = sumVector(v3);
-    cout << sum;
+    return sum;
 }
 
 /******************
@@ -46,11 +47,11 @@ void manhattanDistance(vector <double> v1, vector <double> v2) {
 * acording to: D(x,y):=max(|x_{i} - y_{i}|)
 * for ellaboration: https://en.wikipedia.org/wiki/Chebyshev_distance
 * ******************/
-void chebyshevDistance(vector <double> v1, vector <double> v2) { 
+double chebyshevDistance(vector <double> v1, vector <double> v2) { 
     vector <double> v3 = subtractVectors(v1,v2);
-    v3 = absoluteValuetVector(v3);
-    double maxVal = maxtValueVector(v3);
-    cout << maxVal;
+    v3 = absoluteValueVector(v3);
+    double maxVal = maxValueVector(v3);
+    return maxVal;
 }
 
 /******************
@@ -61,15 +62,15 @@ void chebyshevDistance(vector <double> v1, vector <double> v2) {
 * acording to: d(p,q)=sum_{i=1}^{n} {{|p_{i}-q_{i}|} / {|p_{i}|+|q_{i}|}}
 * for ellaboration: https://en.wikipedia.org/wiki/Canberra_distance
 * ******************/
-void canberraDistance(vector <double> v1, vector <double> v2) {
-    vector <double> v1Abs = absoluteValuetVector(v1);
-    vector <double> v2Abs = absoluteValuetVector(v2);
+double canberraDistance(vector <double> v1, vector <double> v2) {
+    vector <double> v1Abs = absoluteValueVector(v1);
+    vector <double> v2Abs = absoluteValueVector(v2);
     vector <double> vAbs = addVectors(v1Abs, v2Abs);
     vector <double> v3 = subtractVectors(v1,v2);
-    v3 = absoluteValuetVector(v3);
+    v3 = absoluteValueVector(v3);
     v3 = divisionVectors(v3,vAbs);
     double sum = sumVector(v3);
-    cout << sum;
+    return sum;
 }
 
 /******************
@@ -80,9 +81,9 @@ void canberraDistance(vector <double> v1, vector <double> v2) {
 * acording to: D(X,Y)=(sum_{i=1}^{n} |x_{i} - y_{i}|^{p})^{\1/p}
 * for ellaboration: https://en.wikipedia.org/wiki/Minkowski_distance
 * ******************/
-void minkowskiDistance(vector <double> v1, vector <double> v2, int p) {
+double minkowskiDistance(vector <double> v1, vector <double> v2, int p) {
     vector <double> v3 = subtractVectors(v1,v2);
     v3 = powVector(v3,p);
     double sum = sumVector(v3);
-    cout << sqrt(sum);
+    return sqrt(sum);
 }
