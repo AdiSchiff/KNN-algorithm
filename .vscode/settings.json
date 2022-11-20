@@ -2,6 +2,9 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "vector": "cpp",
-        "cmath": "cpp"
-    }
+        "cmath": "cpp",
+    },
+    "C/C++ Include Guard.Auto Update Path Blocklist": [
+        "C:\\msys64\\mingw64\\include"
+    ]
 }

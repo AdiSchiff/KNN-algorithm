@@ -124,7 +124,7 @@ vector <double> divisionVectors( vector <double> vector1,vector <double> vector2
     int vectorsSize=vector1.size();
     int i;
     for(i=0; i<vectorsSize; i++){
-        dividVec.push_back(vector1.at(i)/vector2.at(i));
+        divideVec.push_back(vector1.at(i)/vector2.at(i));
     }
-    return dividVec;
+    return divideVec;
 }
