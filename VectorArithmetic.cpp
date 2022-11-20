@@ -98,7 +98,7 @@ Input: vector<double> vector
 Output:double maxValue
 Function Operation:return the max
 ******************/
-double maxtValueVector( vector <double> vector){
+double maxValueVector( vector <double> vector){
     //Sets the maximum to be the first value in the vector
     double maxValue= vector.at(0);
     int i;
