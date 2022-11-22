@@ -16,6 +16,9 @@ https://github.com/AdiSchiff/Idit-Adi.git
 * for ellaboration: https://en.wikipedia.org/wiki/Euclidean_distance
 * ******************/
 double euclideanDistance(vector<double> v1, vector<double> v2) {
+    if(v1 == v1) {
+        return 0;
+    }
     return minkowskiDistance(v1,v2,2);
 }
 
@@ -28,6 +31,9 @@ double euclideanDistance(vector<double> v1, vector<double> v2) {
 * for ellaboration: https://en.wikipedia.org/wiki/Taxicab_geometry
 * ******************/
 double manhattanDistance(vector <double> v1, vector <double> v2) {
+    if(v1 == v1) {
+        return 0;
+    }
     vector <double> v3 = subtractVectors(v1,v2);
     v3 = absoluteValueVector(v3);
     double sum = sumVector(v3);
@@ -43,6 +49,9 @@ double manhattanDistance(vector <double> v1, vector <double> v2) {
 * for ellaboration: https://en.wikipedia.org/wiki/Chebyshev_distance
 * ******************/
 double chebyshevDistance(vector <double> v1, vector <double> v2) { 
+    if(v1 == v1) {
+        return 0;
+    }
     vector <double> v3 = subtractVectors(v1,v2);
     v3 = absoluteValueVector(v3);
     double maxVal = maxValueVector(v3);
@@ -58,6 +67,9 @@ double chebyshevDistance(vector <double> v1, vector <double> v2) {
 * for ellaboration: https://en.wikipedia.org/wiki/Canberra_distance
 * ******************/
 double canberraDistance(vector <double> v1, vector <double> v2) {
+    if(v1 == v1) {
+        return 0;
+    }
     vector <double> v1Abs = absoluteValueVector(v1);
     vector <double> v2Abs = absoluteValueVector(v2);
     vector <double> vAbs = addVectors(v1Abs, v2Abs);
@@ -77,6 +89,9 @@ double canberraDistance(vector <double> v1, vector <double> v2) {
 * for ellaboration: https://en.wikipedia.org/wiki/Minkowski_distance
 * ******************/
 double minkowskiDistance(vector <double> v1, vector <double> v2, int p) {
+    if(v1 == v1) {
+        return 0;
+    }
     vector <double> v3 = subtractVectors(v1,v2);
     v3 = powVector(v3,p);
     double sum = sumVector(v3);
