@@ -45,8 +45,8 @@ First to run the program you need to install git on your computer.
 Open the command line and follow the following commands:
 - Clone repository:git clone -----------
 - Go into the repository: cd Idit-Adi
--`g++ -std=c++11 *.cpp`
--`./a.out`
+`g++ -std=c++11 *.cpp`
+`./a.out`
 
 
 
