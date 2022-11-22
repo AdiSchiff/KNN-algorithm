@@ -8,10 +8,15 @@ After that it will get another line of numbers separated by a space.
 The program will return all the distances in order with line drop separation.
 
 The distances are:
+
 EuclideanDistance: https://en.wikipedia.org/wiki/Euclidean_distance
+
 ManhattanDistance: https://en.wikipedia.org/wiki/Taxicab_geometry
+
 ChebyshevDistance: https://en.wikipedia.org/wiki/Chebyshev_distance
+
 CanberraDistance: https://en.wikipedia.org/wiki/Canberra_distance
+
 MinkowskiDistance: https://en.wikipedia.org/wiki/Minkowski_distance
 
 MinkowskiDistance- define p as 2.
@@ -40,7 +45,6 @@ ReceiveVector- conversion of the input and vertification of correctness
 
 #Installing And Executing
 First to run the program you need to install git on your computer.
-(In this link: https://github.com/AdiSchiff/Idit-Adi.git )
 
 Open the command line and follow the following commands:
 - Clone repository:git clone -----------
