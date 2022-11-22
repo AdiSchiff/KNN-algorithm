@@ -4,14 +4,14 @@ Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
 */
-
+#include <stdbool.h>
 #include <vector>
-#include <String.h>
+#include <string>
 #include <iostream>
 #include <ctype.h>
-#include "ReceiveVector.h"
 #include <sstream>
+#include <cstring>
 using namespace std;
 
 vector<double> receiveVector();
-boolean checkVector(string s);
+bool checkVector(string s);
