@@ -1,6 +1,7 @@
 #include "VectorArithmetic.h"
 #include "Distance.h"
 #include <iostream>
+
 int main(){
  vector<double> num1 {1, 2, 3};
  vector<double> num2 {3, 2, 1};
