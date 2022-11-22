@@ -4,6 +4,11 @@
         "vector": "cpp",
         "cmath": "cpp",
     },
+    "files.autoSave": "onFocusChange",
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on"
+    },
     "C/C++ Include Guard.Auto Update Path Blocklist": [
         "C:\\msys64\\mingw64\\include"
     ]

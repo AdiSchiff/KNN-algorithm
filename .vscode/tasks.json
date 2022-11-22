@@ -9,6 +9,7 @@
                 "-g",
                 "${workspaceFolder}\\*.cpp",
                 "${workspaceFolder}\\*.h",
+
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
