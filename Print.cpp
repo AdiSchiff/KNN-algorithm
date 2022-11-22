@@ -18,10 +18,10 @@ void printDistance(double distance){
     // Checks if the distance is an integer
     //The distance will be printed in the following format: distance.0
     if(floor(distance) - ceil(distance) == 0)
-        printf("%f.0\n", distance);
+        printf("%.1f\n", distance);
     else{
         //If it is a floating point- prints 16 digits after the point
-        printf("%.16f\n", distance)
+        printf("%.16f\n", distance);
     }
 }
 
@@ -34,12 +34,13 @@ Function Operation: The function receive 2 vectors and sends to print the distan
 obtained from the 5 other functions(distances functions)
 ******************/
 void printAll(vector <double> v1, vector <double> v2){
+
     printDistance(euclideanDistance(v1,v2));
     printDistance(manhattanDistance(v1,v2));
     printDistance(chebyshevDistance(v1,v2));
     printDistance(canberraDistance(v1,v2));
     printDistance(minkowskiDistance(v1,v2,2));
-
+    
 
 }
 
