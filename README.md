@@ -47,7 +47,8 @@ ReceiveVector- conversion of the input and vertification of correctness
 First to run the program you need to install git on your computer.
 
 Open the command line and follow the following commands:
-- Clone repository:git clone -----------
+- Clone repository:git clone https://github.com/AdiSchiff/Idit-Adi.git
+
 - Go into the repository: cd Idit-Adi
 
 `g++ -std=c++11 *.cpp`
