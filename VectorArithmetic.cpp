@@ -6,9 +6,7 @@ https://github.com/AdiSchiff/Idit-Adi.git
 */
 
 #include "VectorArithmetic.h"
-#include <vector>
-#include <iostream>
-#include <cmath>
+
 using namespace std;
 
 /******************
