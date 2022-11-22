@@ -5,12 +5,7 @@ Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
 */
 
-#include <vector>
-#include <cmath>
 #include "Distance.h"
-#include "VectorArithmetic.h"
-#include <iostream>
-using namespace std;
 
 /******************
 * Function Name: euclideanDistance
