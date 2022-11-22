@@ -8,6 +8,8 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #ifndef VECTORARITHMETIC_H_
 #define VECTORARITHMETIC_H_
 #include <vector>
+#include <iostream>
+#include <cmath>
 using namespace std;
 vector <double> addVectors( vector <double> vector1,vector <double> vector2 );
 vector <double> subtractVectors( vector <double> vector1,vector <double> vector2 );
