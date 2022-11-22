@@ -3,7 +3,6 @@
 #include <iostream>
 
 int main(){
-
  vector<double> num1 {1, 2, 3};
  vector<double> num2 {3, 2, 1};
  double d = minkowskiDistance(num1,num2, 2);
