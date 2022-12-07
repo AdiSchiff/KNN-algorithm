@@ -14,4 +14,5 @@ https://github.com/AdiSchiff/Idit-Adi.git
 using namespace std;
 
 vector<double> receiveVector();
+vector<double> transferStringToVector(String v);
 bool checkVector(string s);

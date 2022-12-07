@@ -13,11 +13,23 @@ https://github.com/AdiSchiff/Idit-Adi.git
 * Output: returns a legal vector
 * Function Operation: receive an input and transform it into a vector. 
 * ******************/
-vector<double> receiveVector() {
-    string v;
-    double num;
-    vector<double> vec;
+void receiveVector() {
+  string v;
+  vector<double> vec;
   getline(cin, v);//receive the vector as a stream
+  vec = transferStringToVector(v);
+  return vec;
+}
+
+/******************
+* Function Name: transferStringToVector
+* Input: a string to be transfered into a vector
+* Output: returns a legal vector
+* Function Operation: receive a string and transform it into a vector. 
+* ******************/
+vector<double> transferStringToVector(String v) {
+  double num;
+  vector<double> vec;
   bool isLegal = checkVector(v);
   if(isLegal) {//if the stream is legal create the vector
     istringstream inputVectorStream(v);
