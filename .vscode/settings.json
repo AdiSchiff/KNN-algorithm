@@ -3,6 +3,7 @@
     "files.associations": {
         "vector": "cpp",
         "cmath": "cpp",
+        "iostream": "cpp"
     },
     "files.autoSave": "onFocusChange",
     "editor.quickSuggestions": {

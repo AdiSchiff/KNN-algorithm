@@ -12,6 +12,8 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <iostream>
 using namespace std;
 
+Distance:: ~Distance=default;
+
 /******************
 * Function Name: euclideanDistance
 * Input: 2 vectors

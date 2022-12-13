@@ -8,7 +8,6 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "Print.h"
 
 /******************
-
 Function Name:printDistance
 Input: double distance
 Output: void function
@@ -26,7 +25,6 @@ void printDistance(double distance){
 }
 
 /******************
-
 Function Name:printAll
 Input: vector<double> v1,vector<double> v2
 Output:void function
@@ -40,8 +38,6 @@ void printAll(vector <double> v1, vector <double> v2){
     printDistance(chebyshevDistance(v1,v2));
     printDistance(canberraDistance(v1,v2));
     printDistance(minkowskiDistance(v1,v2,2));
-    
-
 }
 
 
