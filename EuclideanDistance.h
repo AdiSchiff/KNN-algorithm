@@ -1,14 +1,20 @@
-//
-// Created by adidi on 14/12/2022.
-//
+/*
+Ex 2
+Idit Medizada 318879293
+Adi Schiff 212730675
+https://github.com/AdiSchiff/Idit-Adi.git
+*/
 
-#ifndef IDIT_ADI_EUCLIDEANDISTANCE_H
-#define IDIT_ADI_EUCLIDEANDISTANCE_H
+#ifndef EUCLIDEANDISTANCE_H_
+#define EUCLIDEANDISTANCE_H_
 
+#include "Minkowski.h"
+#include <vector>
 
-class EuclideanDistance {
+using namespace std;
 
+class EuclideanDistance : public Distance {
+    double distance(vector<double> v1, vector<double> v2) override;
 };
 
-
-#endif //IDIT_ADI_EUCLIDEANDISTANCE_H
+#endif

@@ -1,14 +1,21 @@
-//
-// Created by adidi on 13/12/2022.
-//
+/*
+Ex 2
+Idit Medizada 318879293
+Adi Schiff 212730675
+https://github.com/AdiSchiff/Idit-Adi.git
+*/
 
-#ifndef IDIT_ADI_MINKOWSKI_H
-#define IDIT_ADI_MINKOWSKI_H
+#ifndef MINKOWSKI_H_
+#define MINKOWSKI_H_
 
+#include "Distance.h"
+#include <vector>
 
-class Minkowski {
+using namespace std;
 
+class Minkowski : public Distance {
+public:
+    double distance(vector<double> v1, vector<double> v2) override;
 };
 
-
-#endif //IDIT_ADI_MINKOWSKI_H
+#endif

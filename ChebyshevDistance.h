@@ -1,14 +1,20 @@
-//
-// Created by adidi on 14/12/2022.
-//
+/*
+Ex 2
+Idit Medizada 318879293
+Adi Schiff 212730675
+https://github.com/AdiSchiff/Idit-Adi.git
+*/
 
-#ifndef IDIT_ADI_CHEBYSHEVDISTANCE_H
-#define IDIT_ADI_CHEBYSHEVDISTANCE_H
+#ifndef CHEBYSHEVDISTANCE_H_
+#define CHEBYSHEVDISTANCE_H_
 
+#include "Distance.h"
+#include <vector>
 
-class ChebyshevDistance {
+using namespace std;
 
+class ChebyshevDistance : public Distance {
+    double distance(vector<double> v1, vector<double> v2) override;
 };
 
-
-#endif //IDIT_ADI_CHEBYSHEVDISTANCE_H
+#endif

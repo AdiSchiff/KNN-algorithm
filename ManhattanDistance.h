@@ -1,14 +1,20 @@
-//
-// Created by adidi on 14/12/2022.
-//
+/*
+Ex 2
+Idit Medizada 318879293
+Adi Schiff 212730675
+https://github.com/AdiSchiff/Idit-Adi.git
+*/
 
-#ifndef IDIT_ADI_MANHATTANDISTANCE_H
-#define IDIT_ADI_MANHATTANDISTANCE_H
+#ifndef MANHATTANDISTANCE_H_
+#define MANHATTANDISTANCE_H_
 
+#include "Distance.h"
+#include <vector>
 
-class ManhattanDistance {
+using namespace std;
 
+class ManhattanDistance : public Distance {
+    double distance(vector<double> v1, vector<double> v2) override;
 };
 
-
-#endif //IDIT_ADI_MANHATTANDISTANCE_H
+#endif
