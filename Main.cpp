@@ -18,7 +18,6 @@ https://github.com/AdiSchiff/Idit-Adi.git
 using namespace std;
 
 /******************
-
 Function Name:whatDis
 Input: string dis = the name of the distance function we need to use.
 Output: no output
@@ -72,4 +71,3 @@ int main(int argc, char **argv) {
         cout << data->findName(stoi(argv[1])) << endl;
     }
 }
-
