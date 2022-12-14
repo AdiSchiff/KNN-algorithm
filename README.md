@@ -23,33 +23,50 @@ int- number of times that the classification is in the K distances.
 7. The program prints the classification of the vector.
 
 Validation:
+
 -The vectors must be in the same size no spaces or special character are allowed.
 If the input is incorrect it will be returned to the user: "Illegal input" and exit the program
+
 - K value must be a positive number, less than the number of vectors in the file. Else,t will be returned to the user:
 "Illegal input" and exit the program
+
 - distance- only 5 strings in upercase letters(like below).t will be returned to the user:"Illegal input" and exit.
+
 - argv: if the program gets a number different from 4 (number of args that the program need) we also close the program.
 
 
 **Dependencies**
 - g++ compiler
 
-#Installing And Executing
-First to run the program you need to install git on your computer.
-Open the command line and follow the following commands:
+Installing And Executing
+
+-First to run the program you need to install git on your computer.
+
+-Open the command line and follow the following commands:
+
 - Clone repository:git clone https://github.com/AdiSchiff/Idit-Adi.git
+
 - Go into the repository: cd Idit-Adi
--make
--a.out k file distance (for example a.out 3 iris_classified.csv MAN)
---------makefile!!!!!!--------
-k= number of neighbors
-file= file classified vectors (relative/ absolut)
-distance= distance metrica (string value)
-AUC-Euclidean distance
-MAN-Taxicab geometry
-CHB-Chebyshev distance
-CAN-Canberra distance
-MIN-Minkowski distance
+
+- make
+
+- a.out k file distance (for example a.out 3 iris_classified.csv MAN).
+
+- k= number of neighbors.
+
+- file= file classified vectors (relative/ absolut).
+
+- distance= distance metrica (string value).
+
+- AUC-Euclidean distance.
+
+- MAN-Taxicab geometry.
+
+- CHB-Chebyshev distance.
+
+- CAN-Canberra distance.
+
+- MIN-Minkowski distance.
 
 
 **Authors**
