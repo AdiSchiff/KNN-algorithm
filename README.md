@@ -1,43 +1,34 @@
 
 **Name**
-Calculating distances between two vectors
+K-nearest-neighbors (KNN) algorithm
 
 **Description**
-The program will receive a line of numbers separated by a space.
-After that it will get another line of numbers separated by a space.
-The program will return all the distances in order with line drop separation.
-
-The distances are:
-
-EuclideanDistance: https://en.wikipedia.org/wiki/Euclidean_distance
-
-ManhattanDistance: https://en.wikipedia.org/wiki/Taxicab_geometry
-
-ChebyshevDistance: https://en.wikipedia.org/wiki/Chebyshev_distance
-
-CanberraDistance: https://en.wikipedia.org/wiki/Canberra_distance
-
-MinkowskiDistance: https://en.wikipedia.org/wiki/Minkowski_distance
-
-MinkowskiDistance- define p as 2.
+The program will receive 3 arguments from the command line(k,file and distance).
+Moreover, it will get a vector from the user.
+The program whill check which of the vectors are tagged in the database closest to the vector we received from the user.
+Then, it takes the K vectors most similar to the input and classifies the vector according to the most common label.
 
 **Implementation**
-The program  receives 2 numbers from the user and checks the currectness of the input
-Negative or positive numbers (integer/ double)
-The vectors must be in the same size
-No spaces or special character are allowed
-If the input is incorrect it will be returned to the user: "Illegal input" and exit the program.
-In addition, the program converts the input into 2 vectors calculates and prints the 5 distances 
-which are explained above.
-If the user enter more than 1 space between 2 numbers the input will be accepted: the same as if there 
-was only one space.
-If the  user will enter a space before the first digit/ minus or after the last digit the program will 
-print "Illegal input"
+1. The program receives a vector and checks its integrity-
+If the vector is incorrect, an error message is returned and the program exits.(Details on input integrity is below).
+2. Then, the program reads the file line by line, divides each line to vector and name and enter them to struct vector
+(class with 3 members- vector, name and distance).
+3. Checking the distances between all the vectors in a database to the vector we received from the user according to 
+the distance metric we receive from the argv. (Base on ex1).
+4. Select algorithm on all the distances. find the  K vectors most similar to the input.
+5. The program puts the K distances into map <string, int>.
+string- is the classification name
+int- number of times that the classification is in the K distances.
+6. find the max value in the map and save the appropriate key.
+7. The program prints the classification of the vector.
 
-VectorArithmetic.cpp- calculating of all arithmetic operations between vectors.
-Print.cpp- printing the distances
-Distances.cpp- calculating the distances according to the formulas
-ReceiveVector- conversion of the input and vertification of correctness
+Validation:
+-The vectors must be in the same size no spaces or special character are allowed.
+If the input is incorrect it will be returned to the user: "Illegal input" and exit the program
+- K value must be a positive number, less than the number of vectors in the file. Else,t will be returned to the user:
+"Illegal input" and exit the program
+- distance- only 5 strings in upercase letters(like below).t will be returned to the user:"Illegal input" and exit.
+- argv: if the program gets a number different from 4 (number of args that the program need) we also close the program.
 
 
 **Dependencies**
@@ -45,16 +36,20 @@ ReceiveVector- conversion of the input and vertification of correctness
 
 #Installing And Executing
 First to run the program you need to install git on your computer.
-
 Open the command line and follow the following commands:
 - Clone repository:git clone https://github.com/AdiSchiff/Idit-Adi.git
-
 - Go into the repository: cd Idit-Adi
-
-`g++ -std=c++11 *.cpp`
-
-`./a.out`
-
+-make
+-a.out k file distance (for example a.out 3 iris_classified.csv MAN)
+--------makefile!!!!!!--------
+k= number of neighbors
+file= file classified vectors (relative/ absolut)
+distance= distance metrica (string value)
+AUC-Euclidean distance
+MAN-Taxicab geometry
+CHB-Chebyshev distance
+CAN-Canberra distance
+MIN-Minkowski distance
 
 
 **Authors**
