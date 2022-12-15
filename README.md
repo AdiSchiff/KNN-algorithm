@@ -36,37 +36,22 @@ If the input is incorrect it will be returned to the user: "Illegal input" and e
 
 
 **Dependencies**
-- g++ compiler
+- g++ compiler   
+**Installing And Executing**   
+-First to run the program you need to install git on your computer.    
+-Open the command line and follow the following commands:  
+`git clone -b tempMainEx2 https://github.com/AdiSchiff/Idit-Adi.git`    
+`make`    
+`a.out k file distance` (for example ./a.out 3 iris_classified.csv MAN).
 
-Installing And Executing
-
--First to run the program you need to install git on your computer.
-
--Open the command line and follow the following commands:
-
-- Clone repository:git clone https://github.com/AdiSchiff/Idit-Adi.git
-
-- Go into the repository: cd Idit-Adi
-
-- make
-
-- a.out k file distance (for example a.out 3 iris_classified.csv MAN).
-
-- k= number of neighbors.
-
-- file= file classified vectors (relative/ absolut).
-
-- distance= distance metrica (string value).
-
-- AUC-Euclidean distance.
-
-- MAN-Taxicab geometry.
-
-- CHB-Chebyshev distance.
-
-- CAN-Canberra distance.
-
-- MIN-Minkowski distance.
+k= number of neighbors.   
+file= file classified vectors (relative/ absolut).   
+distance= distance metrica (string value).  
+AUC-Euclidean distance.   
+MAN-Taxicab geometry.  
+CHB-Chebyshev distance.   
+CAN-Canberra distance.   
+MIN-Minkowski distance.   
 
 
 **Authors**
