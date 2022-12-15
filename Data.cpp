@@ -110,8 +110,9 @@ string Data::findName(int k) {
             it->second = it->second + 1;
         } else { kDistances[name] = 1; }
     }
+
     //find the max
-    string maxName;
+    string maxName="";
     int maxRepetitions = 0;
     map<string, int>::iterator itr;
     for (itr = kDistances.begin(); itr != kDistances.end(); ++itr) {
@@ -120,5 +121,6 @@ string Data::findName(int k) {
             maxName = itr->first;
         }
     }
+    kDistances.clear();
     return maxName;
 }
