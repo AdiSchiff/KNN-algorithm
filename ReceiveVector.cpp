@@ -66,6 +66,9 @@ bool ReceiveVector::checkVector(string s) {
     }
     if (s[i] == '.') {
         i++;
+        if (!isdigit(s[i])) {
+            return false;
+        }
     }
     while (isdigit(s[i])) {//while the note is a digit move to check the next one.
         i++;
@@ -105,6 +108,9 @@ bool ReceiveVector::checkVector(string s) {
             }
             if (s[i] == '.') {
                 i++;
+                if (!isdigit(s[i])) {
+                    return false;
+                }
             }
             while (isdigit(s[i])) {//while the note is a digit move to check the next one.
                 i++;
