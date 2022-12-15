@@ -17,7 +17,10 @@ https://github.com/AdiSchiff/Idit-Adi.git
 * ******************/
 double ChebyshevDistance::distance(vector<double> v1, vector<double> v2) {
     if (v1 == v2) { return 0; }
-
+    if(v1.size() != v2.size()){ 
+        cout<< "Error! The vectors are not in the same size"<< endl;
+        exit(0);
+    }
     ordinaryV = va.subtractVectors(v1, v2);
     ordinaryV = va.absoluteValueVector(ordinaryV);
     double maxVal = va.maxValueVector(ordinaryV);
