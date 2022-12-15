@@ -39,7 +39,7 @@ vector<double> ReceiveVector::transferStringToVector(string v) {
         return vec;
     }
     cout << "illegal input" << endl;
-    exit(0);
+    vec = receiveVector();
 }
 
 /******************
