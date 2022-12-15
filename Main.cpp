@@ -53,6 +53,7 @@ Distance *whatDis(const char *dis) {
 
 int main(int argc, char **argv) {
     if(argc != 4){
+       
         cout << "illegal number of arguments in the configuration" << endl;
         exit(0);
     }
