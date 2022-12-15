@@ -41,7 +41,7 @@ If the input is incorrect it will be returned to the user: "Illegal input" and e
 -First to run the program you need to install git on your computer.    
 -Open the command line and follow the following commands:  
 `git clone -b tempMainEx2 https://github.com/AdiSchiff/Idit-Adi.git`   
-`cd Idit-Adi`
+`cd Idit-Adi`     
 `make`    
 `a.out k file distance` (for example a.out 3 iris_classified.csv MAN).
 
