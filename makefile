@@ -7,7 +7,7 @@ OBJC	= Client.o
 SOURCEC	= Client.cpp
 OUTC	= client.out
 CC	 = g++
-FLAGS	 = -g -c
+FLAGS	 = -g -c -w
 
 
 all: $(OBJS) $(OBJC)
