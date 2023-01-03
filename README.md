@@ -48,11 +48,15 @@ for example: 127.0.0.1 localhost
 -First to run the program you need to install git on your computer.    
 -Open the command line and follow the following commands:  
 `git clone -b main3 https://github.com/AdiSchiff/Idit-Adi.git`   
-`cd Idit-Adi`     
+`cd Idit-Adi`    
+open 2 terminals:    
+1. Server   
 `make`    
-`Server.out  file path portNumber` (for example Server.out  datasets/iris/iris_classified.csv 12345).    
-`Client.out portNumber ipNumber` (for example Cerver.out 127.0.0.1 12345).      
-
+`./Server.out  filePath portNumber` (for example ./Server.out  datasets/iris/iris_classified.csv 12345).   
+2. Client   
+`make`    
+`./Client.out portNumber ipNumber` (for example ./Client.out 127.0.0.1 12345).        
+ 
 k= number of neighbors.   
 file= file classified vectors (relative/ absolut).   
 distance= distance metrica (string value).  
