@@ -1,11 +1,52 @@
 /*
-Ex 2
+Ex 3
 Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
 */
 
 #include "Data.h"
+
+/******************
+* Function Name: getData
+* Input: buffer that contains the input from the client and the length of this string
+* Output: an array that holds the separated strings
+* Function Operation:cut the string from the client into separate arguments
+* ******************/
+string *Data:: getData(char buffer[], int numOfBytes){
+auto *userData = new string[3];
+string temp;
+int i;
+//retrieve the vector
+for( i=0; i<numOfBytes; i++){
+    if(isdigit(buffer[i]) || (buffer[i] == ' ') || (buffer[i] == '.') || (buffer[i] == '-') || (buffer[i] == 'E')) {
+        temp+=buffer[i];
+    }
+    else{
+        break;
+    }
+}
+temp.pop_back();// delete the space from the end of the vector
+userData[0]=temp;
+temp="";
+int j;
+//retrieve the distance metric
+for(j = i; j<numOfBytes; j++){
+    if(buffer[j]== ' '){
+        break;
+    }
+    temp+=buffer[j];
+}
+userData[1]=temp;
+temp="";
+//retrieve the knn value
+for(int k = j+1; k<numOfBytes; k++){
+    temp+=buffer[k];
+}
+userData[2]=temp;
+return userData;
+}
+
 
 /******************
 * Function Name: createStructVector
@@ -78,10 +119,6 @@ void Data::calcDis(Distance *dis, const vector<double> &vec) {
 * Function Operation:sort the first k structVec by their distance value.
 * ******************/
 void Data::sortDistances(int k) {
-    if (k > structVec.size() - 1) {
-        cout << "illegal KNN value" << endl;
-        exit(0);
-    }
     for (size_t i = 0; i < k; i++) {
         for (size_t j = i; j < structVec.size() - 1; j++) {
             if (structVec.at(i).getDistance() > structVec.at(j + 1).getDistance()) {

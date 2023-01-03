@@ -1,5 +1,5 @@
 /*
-Ex 2
+Ex 3
 Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
@@ -26,13 +26,10 @@ private:
     vector<StructVec> structVec;
 public:
     StructVec *createStructVector(string line);
-
     vector<StructVec> *initializeStructVec(string filePath);
-
+    string *getData(char buffer[], int numOfBytes);
     void calcDis(Distance *dis, const vector<double> &vec);
-
     void sortDistances(int k);
-
     string findName(int k);
 };
 
