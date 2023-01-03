@@ -38,7 +38,7 @@ If the input is incorrect it will be returned to the user: "invalid input" and e
 
 - distance- only 5 strings in upercase letters(like below).t will be returned to the user:"invalid input" and exit.
 
--Ip number- must be in that format XXXX.XXXX.XXXX.XXXX  (X:0-9)   
+- Ip number- must be in that format XXXX.XXXX.XXXX.XXXX  (X:0-9)   
 for example: 127.0.0.1 localhost   
 - port number must be in the range of 0-65,535
 
