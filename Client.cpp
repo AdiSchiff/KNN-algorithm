@@ -30,6 +30,7 @@ int main(int argc, char **argv)
     if (connect(sock,(struct sockaddr*)&sin, sizeof(sin))<0) // create connection with the server
     {
         perror("error connecting to server");
+        return 0;
     }
 
     string userInput;
