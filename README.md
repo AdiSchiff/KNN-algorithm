@@ -42,6 +42,8 @@ If the input is incorrect it will be returned to the user: "invalid input" and e
 for example: 127.0.0.1 localhost   
 - port number must be in the range of 0-65,535
 
+- In case the routing of the files is incorrect, an error message is printed to the client and the program closes(Server+Client)   
+
 **Dependencies**
 - g++ compiler   
 **Installing And Executing**   
