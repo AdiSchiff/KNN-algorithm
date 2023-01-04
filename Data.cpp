@@ -90,7 +90,7 @@ vector<StructVec> *Data::initializeStructVec(string filePath) {
     file.open(filePath);
     if (!file.is_open()) {
         cout << "Error! can't open file" << endl;
-        exit(0);
+        return nullptr;
     }
     string line;
     while (getline(file, line)) {

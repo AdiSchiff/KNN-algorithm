@@ -106,6 +106,22 @@ int main(int argc, char **argv)
                 auto data = new Data();
                 auto *rv = new ReceiveVector();
                 vector<StructVec> *structVec = data->initializeStructVec(argv[1]);
+                //if the file path was incorrect
+                if(structVec == nullptr){
+                    output = "";
+                    //return massage to the client
+                    char *data_addr = new char[output.length() + 1];
+                    strcpy(data_addr, output.c_str());
+                    int data_len = strlen(data_addr);
+                    int sent_bytes = send(client_sock, data_addr, data_len, 0);
+                    if (sent_bytes < 0) {
+                        perror("error sending to client");
+                    }
+                    //close the connection with the current client
+                    close(client_sock);
+                    close(sock);
+                    return 0;
+                }
                 string *userInput = data->getData(buffer, read_bytes);
                 const char *knn = userInput[2].c_str();
                 //check the legality of the KNN value
