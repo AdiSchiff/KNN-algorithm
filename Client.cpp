@@ -56,6 +56,8 @@ int main(int argc, char **argv)
         int read_bytes = recv(sock, buffer, expected_data_len, 0);
         if (read_bytes == 0) {
             // connection is closed
+            cout<<"invalid file path at the server's arguments"<<endl;
+            break;
         } else if (read_bytes < 0) {
             perror("error reading data");
         } else {
