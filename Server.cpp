@@ -12,6 +12,15 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <string.h>
 #include <iostream>
 #include "ReceiveVector.h"
+#include "Command.h"
+#include "Command1.h"
+#include "Command2.h"
+#include "Command3.h"
+#include "Command4.h"
+#include "Command5.h"
+#include "Command8.h"
+#include "Command0.h"
+
 #include "Data.h"
 #include "Distance.h"
 #include "Minkowski.h"
@@ -79,6 +88,16 @@ int main(int argc, char **argv)
     {
         perror("error listening to a socket");
     }
+    Command0 command;
+    Command& command0 = command;
+    Command* command1 = Command1;
+    Command* command2 = Command2;
+    Command* command3 = Command3;
+    Command* command4 = Command4;
+    Command* command5 = Command5;
+    Command* command8 = Command8;
+
+    Command** menu [command0, command1, command2, command3, command4, command5, command8];
     while(true) {
         struct sockaddr_in client_sin;
         unsigned int addr_len = sizeof(client_sin);
@@ -86,7 +105,12 @@ int main(int argc, char **argv)
         if (client_sock < 0) {
             perror("error accepting client");
         }
+
         while(true) {
+            int i;
+            for(i = 0; i<7; i++){
+                menu[i].getDio().wright(menu[i].getString());
+            }
             char buffer[4096];
             int expected_data_len = sizeof(buffer);
             memset(buffer,0,sizeof (buffer));
