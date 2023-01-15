@@ -9,8 +9,8 @@ using namespace std;
 
 class DefaultIO {
 public:
-    virtual string read() const;
-    virtual void wright(string) const;
+    virtual string read();
+    virtual void write(string);
 };
 
 

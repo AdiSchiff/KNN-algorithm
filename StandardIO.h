@@ -10,15 +10,8 @@
 using namespace std;
 
 class StandardIO: public DefaultIO{
-public:
-    string read() const override {
-        string input;
-        cin >> input;
-        return input;
-        ;}
-    void wright(string s) const override {
-        cout<< s <<endl;
-    }
+    string read() override;
+    void write(string s) override;
 };
 
 
