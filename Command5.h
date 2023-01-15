@@ -10,9 +10,11 @@ using namespace std;
 class Command5: public Command{
 private:
     string const description = "download results";
+    DefaultIO dio;
 public:
-    void execute() const override;
-
+    explicit Command5(DefaultIO dio);
+    void execute() override;
+    ~Command5();
 };
 
 

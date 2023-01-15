@@ -10,9 +10,11 @@ using namespace std;
 class Command2: public Command{
 private:
     string const description = "algorithm settings";
+    DefaultIO dio;
 public:
-    void execute() const override;
-
+    explicit Command2(DefaultIO dio);
+    void execute() override;
+    ~Command2();
 };
 
 
