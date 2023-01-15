@@ -13,3 +13,7 @@ string StandardIO::read(){
 void StandardIO::write(string s) {
     cout<< s <<endl;
 }
+
+StandardIO::~StandardIO() {
+
+}

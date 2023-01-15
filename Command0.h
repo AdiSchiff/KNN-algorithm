@@ -5,14 +5,17 @@
 #ifndef CLIENT_COMMAND0_H
 #define CLIENT_COMMAND0_H
 #include "Command.h"
+#include "DefaultIO.h"
 using namespace std;
 
 class Command0: public Command{
 private:
     string const description = "Welcome to the KNN Classifier Server. please choose an option:";
+    DefaultIO dio;
 public:
-    void execute() const override;
-
+    explicit Command0(DefaultIO dio);
+    void execute() override;
+    ~Command0();
 };
 
 

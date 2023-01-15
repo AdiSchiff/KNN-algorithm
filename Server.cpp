@@ -12,6 +12,8 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <string.h>
 #include <iostream>
 #include "ReceiveVector.h"
+#include "DefaultIO.h"
+#include "StandardIO.h"
 #include "Command.h"
 #include "Command1.h"
 #include "Command2.h"
@@ -20,7 +22,6 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "Command5.h"
 #include "Command8.h"
 #include "Command0.h"
-
 #include "Data.h"
 #include "Distance.h"
 #include "Minkowski.h"
@@ -88,16 +89,24 @@ int main(int argc, char **argv)
     {
         perror("error listening to a socket");
     }
-    Command0 command;
-    Command& command0 = command;
-    Command* command1 = Command1;
-    Command* command2 = Command2;
-    Command* command3 = Command3;
-    Command* command4 = Command4;
-    Command* command5 = Command5;
-    Command* command8 = Command8;
+    DefaultIO *dio = new StandardIO;
+    DefaultIO& dio1 = *dio;
+    auto* command0 = new Command0(dio1);
+    Command* ref0 = command0;
+    auto* command1 = new Command1(dio1);
+    Command* ref1 = command1;
+    auto* command2 = new Command2(dio1);
+    Command* ref2 = command2;
+    auto* command3 = new Command3(dio1);
+    Command* ref3 = command3;
+    auto* command4 = new Command4(dio1);
+    Command* ref4 = command4;
+    auto* command5 = new Command5(dio1);
+    Command* ref5 = command5;
+    auto* command8 = new Command8(dio1);
+    Command* ref8 = command8;
 
-    Command** menu [command0, command1, command2, command3, command4, command5, command8];
+    Command** menu [7] = {&ref0, &ref1, &ref2, &ref3, &ref4, &ref5, &ref8};
     while(true) {
         struct sockaddr_in client_sin;
         unsigned int addr_len = sizeof(client_sin);
@@ -109,7 +118,7 @@ int main(int argc, char **argv)
         while(true) {
             int i;
             for(i = 0; i<7; i++){
-                menu[i].getDio().wright(menu[i].getString());
+                (*menu[i])->getDio().write((*menu[i])->getDescription());
             }
             char buffer[4096];
             int expected_data_len = sizeof(buffer);

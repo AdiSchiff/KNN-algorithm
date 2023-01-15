@@ -12,6 +12,7 @@ using namespace std;
 class StandardIO: public DefaultIO{
     string read() override;
     void write(string s) override;
+    ~StandardIO();
 };
 
 

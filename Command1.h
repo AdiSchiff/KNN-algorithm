@@ -11,9 +11,11 @@ using namespace std;
 class Command1: public Command{
 private:
     string const description = "1. upload an unclassified csv data file";
+    DefaultIO dio;
 public:
-    void execute() const override;
-
+    explicit Command1(const DefaultIO& dio);
+    void execute() override;
+~Command1();
 };
 
 

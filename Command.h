@@ -2,8 +2,8 @@
 // Created by adi on 1/12/23.
 //
 
-#ifndef CLIENT_COMMAND_H
-#define CLIENT_COMMAND_H
+#ifndef CLIENT_COMMA_H
+#define CLIENT_COMMA_H
 #include <string>
 #include "DefaultIO.h"
 using namespace std;
@@ -12,12 +12,13 @@ using namespace std;
 class Command {
 private:
     string const description;
-    DefaultIO const dio;
+    DefaultIO dio;
 public:
-    string getDescription() const { return this->description;}
-    DefaultIO getDio() const {return this->dio;}
-    virtual void execute() const = 0;
+    string getDescription() const;
+    DefaultIO getDio() const;
+    virtual void execute() = 0;
+    ~Command();
 };
 
 
-#endif //CLIENT_COMMAND_H
+#endif //CLIENT_COMMA_H
