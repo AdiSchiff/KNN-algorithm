@@ -4,16 +4,17 @@
 
 #include "StandardIO.h"
 
-string StandardIO::read(){
+string StandardIO::read()const{
     string input;
     cin >> input;
     return input;
 }
 
-void StandardIO::write(string s) {
+void StandardIO::write(string s) const {
+    cout<<"bye"<<endl;
     cout<< s <<endl;
 }
 
-StandardIO::~StandardIO() {
+/*StandardIO::~StandardIO() {
 
-}
+}*/
