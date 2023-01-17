@@ -10,9 +10,10 @@
 using namespace std;
 
 class StandardIO: public DefaultIO{
-    string read() override;
-    void write(string s) override;
-    ~StandardIO();
+public:
+    string read()const override;
+    void write(string s) const override;
+    //~StandardIO();
 };
 
 
