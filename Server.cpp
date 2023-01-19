@@ -13,6 +13,7 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "StandardIO.h"
 #include "Cli.h"
 #include "Distance.h"
+#include "KnnDetails.h"
 #include "Minkowski.h"
 #include "EuclideanDistance.h"
 #include "ManhattanDistance.h"
@@ -87,7 +88,7 @@ int main(int argc, char **argv)
             perror("error accepting client");
         }
         DefaultIO* dio = new StandardIO;
-        KnnDetails* knn = new KnnDetails;
+        KnnDetails* knn = new KnnDetails();
         Cli *cli = new Cli(dio, knn);
         cli->start();
         close(client_sock);

@@ -6,25 +6,27 @@ https://github.com/AdiSchiff/Idit-Adi.git
 */
 
 #include "KnnDetails.h"
+#include <utility>
 #include <vector>
+
 KnnDetails:: KnnDetails(){
-    _k = "5";
-    _distanceMetric = "AUC";
+    k = "5";
+    distanceMetric = "AUC";
 }
-void KnnDetails:: setK(string k){
-    _k=k;
+void KnnDetails:: setK(string _k){
+    k=std::move(_k);
 }
-void KnnDetails:: setDistanceMetric(string distanceMetric){
-    _distanceMetric=distanceMetric;
+void KnnDetails:: setDistanceMetric(string _distanceMetric){
+    distanceMetric=std::move(_distanceMetric);
 }
-void KnnDetails:: setTestVectors(StructVec vector){ testVectors.push_back(vector);}
-void KnnDetails:: setTrainVectors(StructVec vector){ trainVectors.push_back(vector);}
-void clearTrainVectors(){ trainVectors.clear();}
-void clearTestVectors(){ testVectors.clear();}
+void KnnDetails:: setTestVectors(const StructVec& vector){ testVectors.push_back(vector);}
+void KnnDetails:: setTrainVectors(const StructVec& vector){ trainVectors.push_back(vector);}
+void KnnDetails::clearTrainVectors() { trainVectors.clear();}
+void KnnDetails::clearTestVectors(){ testVectors.clear();}
 
 
-vector <StructVec> getTestVectors() {return testVectors;}
-vector <StructVec> getTrainVectors(){ return trainVectors;}
+vector <StructVec> KnnDetails::getTestVectors() {return testVectors;}
+vector <StructVec> KnnDetails::getTrainVectors(){ return trainVectors;}
 
-string KnnDetails:: getK(){return _k;}
-string KnnDetails:: getDistanceMetric(){return _distanceMetric;}
+string KnnDetails:: getK(){return k;}
+string KnnDetails:: getDistanceMetric(){return distanceMetric;}

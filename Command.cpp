@@ -30,8 +30,7 @@ UploadData::UploadData(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn)
     description = "1. upload an unclassified csv data file";
 }
 
-StructVec *UploadData::createStructVector(string line) {
-
+StructVec* UploadData::createStructVector(const string& line) {
     string name;
     string tempVec;
     string vecString;
@@ -62,8 +61,8 @@ void UploadData::execute() {
     while (true)
     {
         string line= dio->read();
-        if (line.compare("error") == 0){return;}
-        if(line.compare("finish") == 0){break;}
+        if (line == "error"){return;}
+        if(line == "finish"){break;}
         knnDetails->setTrainVectors(*createStructVector(line));
     }
     dio->write("Upload complete");
@@ -73,11 +72,10 @@ void UploadData::execute() {
     while (true)
     {
         string line= dio->read();
-        if(line.compare("finish") == 0){break;}
+        if(line == "finish"){break;}
         knnDetails->setTestVectors(*createStructVector(line));
     }
     dio->write("Upload complete");
-    return;
 }
 
 UploadData::~UploadData() {}
@@ -89,46 +87,46 @@ AlgoSettings::AlgoSettings(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _
     description = "2. algorithm settings";
 }
 
-bool AlgoSettings::isValidk(string k){
+bool AlgoSettings::isValidK(const string& k){
     if(stoi(k) < 0 || stoi(k) > (knnDetails->getTestVectors()).size() ){ return false;}
     return true;
 }
 
-bool AlgoSettings::isValidDistance(string distance){
-    if((strcmp(distance, "AUC") == 0) || (strcmp(distance, "MAN") == 0) || (strcmp(distance, "CHB") == 0)){return true;}
-    if((strcmp(distance, "CAN") == 0) || (strcmp(distance, "MIN") == 0)){ return true;}
+bool AlgoSettings::isValidDistance(const string& distance){
+    if(distance == "AUC" || distance == "MAN" || distance == "CHB" || distance == "CAN" || distance == "MIN"){
+        return true;
+    }
     return false;
 }
+
 void AlgoSettings::execute() {
-    string parameters = "The current KNN parameters are: K = " + knnDetails->getK + ", distance metric = " + knnDetails->getDistanceMetric;
-    message = dio->read();
+    string parameters = "The current KNN parameters are: K = " + knnDetails->getK() + ", distance metric = " + knnDetails->getDistanceMetric();
+    string message = dio->read();
     if( message == "\n"){
         dio->write("finish");
         return;
     }
-    string word;
+    string word, output;
     stringstream ss(message);
     getline(ss, word, ' ');
-    knnDetails->setK(word);
-    getline(ss, word, ' ');
-    knnDetails->setDistanceMetric(word);
-    if(isValidDistance() && isValidk()){
-        dio->write("finish");
-        return;
+    if(isValidK(word)){
+        knnDetails->setDistanceMetric(word);
+    } else {
+        output+= "invalid value for K";
     }
-    string output="";
-    if(!isValidDistance()){ output = "invalid value for metric\n";}
-    if(!isValidk()){ output+= "invalid value for K";}
+    getline(ss, word, ' ');
+    if(isValidDistance(word)){
+        knnDetails->setK(word);
+    } else {
+        output = "invalid value for metric\n";
+    }
+    if(isValidDistance(knnDetails->getDistanceMetric()) && isValidK(knnDetails->getK())){
+        output = "finish";
+   }
     dio->write(output);
-    return;
-
-
-
 }
 
 AlgoSettings::~AlgoSettings() {}
-
-
 
 
 
@@ -137,7 +135,9 @@ Classify::Classify(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
     description = "3. classify data";
 }
 
-void Classify::execute() {}
+void Classify::execute() {
+
+}
 
 Classify::~Classify() {}
 
