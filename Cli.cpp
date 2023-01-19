@@ -7,16 +7,16 @@
 #include "Command.h"
 #define SIZE_OF_MENU 7
 
-Cli::Cli(DefaultIO *&_dio): dio(_dio) {}
+Cli::Cli(DefaultIO *&_dio, KnnDetails *&_knn): dio(_dio), knnDetails(_knn) {}
 
 void Cli::start() {
-    Welcome *ptr0 = new Welcome(dio);
-    UploadData *ptr1 = new UploadData(dio);
-    AlgoSettings *ptr2 = new AlgoSettings(dio);
-    Classify *ptr3 = new Classify(dio);
-    Display *ptr4 = new Display(dio);
-    Download *ptr5 = new Download(dio);
-    Exit *ptr8 = new Exit(dio);
+    Welcome *ptr0 = new Welcome(dio, knnDetails);
+    UploadData *ptr1 = new UploadData(dio, knnDetails);
+    AlgoSettings *ptr2 = new AlgoSettings(dio, knnDetails);
+    Classify *ptr3 = new Classify(dio, knnDetails);
+    Display *ptr4 = new Display(dio, knnDetails);
+    Download *ptr5 = new Download(dio, knnDetails);
+    Exit *ptr8 = new Exit(dio, knnDetails);
     Command *menu[SIZE_OF_MENU] = {ptr0, ptr1, ptr2, ptr3, ptr4, ptr5, ptr8};
     int i;
     string s;
