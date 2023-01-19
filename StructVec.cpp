@@ -20,6 +20,17 @@ StructVec::StructVec(vector<double> vec1, string name1) {
 }
 
 /******************
+* Function Name: StructVec
+* Input: vector 
+* Output: no output
+* Function Operation: create a StructVec
+* ******************/
+StructVec::StructVec(vector<double> vec1) {
+    vec = vec1;
+    name = "";
+    distance = 0;
+}
+/******************
 * Function Name: getVector
 * Input: no input
 * Output: vector
@@ -60,3 +71,6 @@ double StructVec::getDistance() const {
     return distance;
 }
 
+void StructVec:: setName(string name1){
+    name=name1;
+}

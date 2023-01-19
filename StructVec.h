@@ -21,14 +21,12 @@ private:
     double distance;
 public:
     StructVec(vector<double> vec1, string name1);
-
+    StructVec(vector<double> vec1);
     vector<double> getVector();
-
     const string &getName() const;
-
     double getDistance() const;
-
     void setDistance(double dist);
+    void StructVec:: setName(string name1);
 };
 
 #endif 
