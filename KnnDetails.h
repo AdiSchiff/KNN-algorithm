@@ -8,20 +8,18 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #ifndef KNNDETAILS_H_
 #define KNNDETAILS_H_
 
-
+#include "StructVec.h"
 class KnnDetails {
-    string _trainCSV;
-    string _testCSV;
+    
     int _k;
     string _distanceMetric;
-
-    void setTrainCSV(string trainCSV);
-    void setTestCSV(string testCSV);
+    vector <StructVec> testVectors;
+    vector <StructVec> trainVectors;
+    
     void setK(int k);
     void setDistanceMetric(string distanceMetric);
 
-    string getTrainCSV();
-    string getTestCSV();
+    
     int getK();
     string getDistanceMetric();
 
