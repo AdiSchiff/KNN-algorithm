@@ -6,6 +6,7 @@
 #define CLIENT_COMMA_H
 #include <string>
 #include "DefaultIO.h"
+#include "KnnDetails.h"
 using namespace std;
 
 
@@ -13,8 +14,9 @@ class Command {
 protected:
     string description;
     DefaultIO * dio;
+    KnnDetails * knnDetails;
 public:
-    Command(DefaultIO *_dio);
+    Command(DefaultIO *_dio, KnnDetails *_knn);
     string getDescription() const;
     virtual void execute() = 0;
     ~Command();
@@ -22,49 +24,49 @@ public:
 
 class Welcome: public Command{
 public:
-    Welcome(DefaultIO *&_dio);
+    Welcome(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Welcome();
 };
 
 class UploadData: public Command{
 public:
-    UploadData(DefaultIO *&_dio);
+    UploadData(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~UploadData();
 };
 
 class AlgoSettings: public Command{
 public:
-    AlgoSettings(DefaultIO *&_dio);
+    AlgoSettings(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~AlgoSettings();
 };
 
 class Classify: public Command{
 public:
-    Classify(DefaultIO *&_dio);
+    Classify(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Classify();
 };
 
 class Display: public Command{
 public:
-    Display(DefaultIO *&_dio);
+    Display(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Display();
 };
 
 class Download: public Command{
 public:
-    Download(DefaultIO *&_dio);
+    Download(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Download();
 };
 
 class Exit: public Command{
 public:
-    Exit(DefaultIO *&_dio);
+    Exit(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Exit();
 };

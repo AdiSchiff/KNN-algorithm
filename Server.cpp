@@ -6,17 +6,12 @@ https://github.com/AdiSchiff/Idit-Adi.git
 */
 
 #include <sys/socket.h>
-#include <stdio.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <string.h>
-#include <iostream>
-#include "ReceiveVector.h"
+#include <cstring>
 #include "DefaultIO.h"
 #include "StandardIO.h"
-#include "Command.h"
 #include "Cli.h"
-#include "Data.h"
 #include "Distance.h"
 #include "Minkowski.h"
 #include "EuclideanDistance.h"
@@ -70,7 +65,7 @@ int main(int argc, char **argv)
     {
         perror("error creating socket");
     }
-    struct sockaddr_in sin;
+    struct sockaddr_in sin{};
     memset(&sin,0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
@@ -85,14 +80,15 @@ int main(int argc, char **argv)
     }
 
     while(true) {
-        struct sockaddr_in client_sin;
+        struct sockaddr_in client_sin{};
         unsigned int addr_len = sizeof(client_sin);
         int client_sock = accept(sock, (struct sockaddr *) &client_sin, &addr_len);
         if (client_sock < 0) {
             perror("error accepting client");
         }
         DefaultIO* dio = new StandardIO;
-        Cli *cli = new Cli(dio);
+        KnnDetails* knn = new KnnDetails;
+        Cli *cli = new Cli(dio, knn);
         cli->start();
         close(client_sock);
     }
