@@ -109,20 +109,20 @@ void AlgoSettings::execute() {
     string word, output;
     stringstream ss(message);
     getline(ss, word, ' ');
-    if(isValidDistance(word)){
-        knnDetails->setK(word);
-    } else {
-        output = "invalid value for metric\n";
-    }
-    getline(ss, word, ' ');
     if(isValidK(word)){
         knnDetails->setDistanceMetric(word);
     } else {
         output+= "invalid value for K";
     }
+    getline(ss, word, ' ');
+    if(isValidDistance(word)){
+        knnDetails->setK(word);
+    } else {
+        output = "invalid value for metric\n";
+    }
     if(isValidDistance(knnDetails->getDistanceMetric()) && isValidK(knnDetails->getK())){
         output = "finish";
-    }
+   }
     dio->write(output);
 }
 
