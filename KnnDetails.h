@@ -11,16 +11,23 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "StructVec.h"
 class KnnDetails {
     
-    int _k;
+    string _k;
     string _distanceMetric;
     vector <StructVec> testVectors;
     vector <StructVec> trainVectors;
-    
-    void setK(int k);
-    void setDistanceMetric(string distanceMetric);
 
-    
-    int getK();
+    KnnDetails();
+    void setK(string k);
+    void setDistanceMetric(string distanceMetric);
+    void setTrainVectors(StructVec);
+    void setTestVectors(StructVec);
+    void clearTrainVectors();
+    void clearTestVectors();
+
+
+    vector <StructVec> getTestVectors();
+    vector <StructVec> getTrainVectors();
+    string getK();
     string getDistanceMetric();
 
 };
