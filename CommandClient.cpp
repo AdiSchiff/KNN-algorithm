@@ -42,7 +42,6 @@ void UploadData::execute() {
         output = dio->read();
         cout << output << endl;
     }
-    return;
 }
 
 UploadData::~UploadData() {}
@@ -59,10 +58,9 @@ void AlgoSettings::execute() {
     cin >> s;
     dio->write(s);
     s = dio->read();
-    if(s.compare( "finish")){
+    if(s != "finish"){
         cout << s << endl;
     }
-    return;
 }
 
 AlgoSettings::~AlgoSettings() {}

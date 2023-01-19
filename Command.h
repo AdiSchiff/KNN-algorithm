@@ -7,7 +7,7 @@
 #include <string>
 #include "DefaultIO.h"
 #include "KnnDetails.h"
-#include "ReceiveVector"
+#include "ReceiveVector.h"
 using namespace std;
 
 
@@ -33,6 +33,7 @@ public:
 class UploadData: public Command{
 public:
     UploadData(DefaultIO *&_dio, KnnDetails *&_knn);
+    static StructVec* createStructVector(const string& line);
     void execute() override;
     ~UploadData();
 };
@@ -40,6 +41,8 @@ public:
 class AlgoSettings: public Command{
 public:
     AlgoSettings(DefaultIO *&_dio, KnnDetails *&_knn);
+    bool isValidK(const string& k);
+    static bool isValidDistance(const string& distance);
     void execute() override;
     ~AlgoSettings();
 };
