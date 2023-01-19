@@ -7,6 +7,7 @@
 #include <string>
 #include "DefaultIO.h"
 #include "KnnDetails.h"
+#include "ReceiveVector"
 using namespace std;
 
 
