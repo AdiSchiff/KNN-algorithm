@@ -112,7 +112,7 @@ void AlgoSettings::execute() {
     knnDetails->setK(word);
     getline(ss, word, ' ');
     knnDetails->setDistanceMetric(word);
-    if(isValidDistance() && isValidk()){         
+    if(isValidDistance() && isValidk()){
         dio->write("finish");
         return;
     }
