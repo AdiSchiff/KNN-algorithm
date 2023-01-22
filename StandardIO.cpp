@@ -6,12 +6,11 @@
 
 string StandardIO::read()const{
     string input;
-    cin >> input;
+    getline(cin, input);
     return input;
 }
 
 void StandardIO::write(string s) const {
-    cout<<"bye"<<endl;
     cout<< s <<endl;
 }
 
