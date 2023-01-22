@@ -52,6 +52,11 @@ public:
     Classify(DefaultIO *&_dio, KnnDetails *&_knn);
     void execute() override;
     ~Classify();
+
+    Distance *whatDis(const char *dis);
+    void calcDis(Distance *dis, const vector<double> &vec);
+    void sortDistances(int k,vector <structVec> *&classified);
+    string findName(int k,vector <structVec> *&classified);
 };
 
 class Display: public Command{
