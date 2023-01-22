@@ -35,8 +35,7 @@ void Cli::start() {
         i = stoi(s);
         if (i>0 && i<6) {
             menu[i]->execute();
-        }
-        if(i == 8) {
+        } else if(i == 8) {
             break;
         } else {
             dio->write(invalid);

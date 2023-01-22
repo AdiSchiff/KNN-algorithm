@@ -26,7 +26,7 @@ public:
     const string &getName() const;
     double getDistance() const;
     void setDistance(double dist);
-    void StructVec:: setName(string name1);
+    void setName(string name1);
 };
 
 #endif 

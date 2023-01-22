@@ -88,7 +88,9 @@ AlgoSettings::AlgoSettings(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _
 }
 
 bool AlgoSettings::isValidK(const string& k){
-    if(stoi(k) < 0 || stoi(k) > (knnDetails->getTestVectors()).size() ){ return false;}
+    char* _k = new char[k.length() + 1];
+    strcpy(_k,k.c_str());
+    if(stoi(k) < 0 || !isdigit(*_k) ||stoi(k) > (knnDetails->getTestVectors()).size() ){ return false;}
     return true;
 }
 
@@ -100,25 +102,33 @@ bool AlgoSettings::isValidDistance(const string& distance){
 }
 
 void AlgoSettings::execute() {
-    string parameters = "The current KNN parameters are: K = " + knnDetails->getK() + ", distance metric = " + knnDetails->getDistanceMetric();
+    dio->write("The current KNN parameters are: K = " + knnDetails->getK() + ", distance metric = " + knnDetails->getDistanceMetric());
     string message = dio->read();
-    if( message == "\n"){
+    if( message == ""){
         dio->write("finish");
         return;
     }
-    string word, output;
-    stringstream ss(message);
-    getline(ss, word, ' ');
-    if(isValidK(word)){
+    cout << message << endl;
+    string word, k, output;
+    for (char c: message) {
+        if (c == ' ') {
+            k = word;
+            word = "";
+        } else {
+            word += c;
+        }
+    }
+    cout<<k<<endl;
+    if(isValidK(k)){
+        knnDetails->setK(k);
+    } else {
+        output = "invalid value for K ";
+    }
+    if(isValidDistance(word)){
+        cout<<word<<endl;
         knnDetails->setDistanceMetric(word);
     } else {
-        output+= "invalid value for K";
-    }
-    getline(ss, word, ' ');
-    if(isValidDistance(word)){
-        knnDetails->setK(word);
-    } else {
-        output = "invalid value for metric\n";
+        output += "invalid value for metric\n";
     }
     if(isValidDistance(knnDetails->getDistanceMetric()) && isValidK(knnDetails->getK())){
         output = "finish";
@@ -135,7 +145,7 @@ Classify::Classify(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
     description = "3. classify data";
 }
 
-Classify ::Distance *whatDis(const char *dis) {
+Distance *Classify::whatDis(const char *dis) {
     if (strcmp(dis, "AUC") == 0) {
         auto *ed = new EuclideanDistance();
         return ed;
@@ -157,7 +167,7 @@ Classify ::Distance *whatDis(const char *dis) {
         return mid;
     }
     else {
-        return NULL;
+        return nullptr;
     }
 }
 
@@ -166,24 +176,24 @@ void Classify::calcDis(Distance *dis, const vector<double> &vec) {
         v.setDistance(dis->distance(vec, v.getVector()));
     }
 }
-void Classify::sortDistances(int k,vector <structVec> *&classified) {
-    for (size_t i = 0; i < k; i++) {
-        for (size_t j = i; j < classified.size() - 1; j++) {
-            if (classified.at(i).getDistance() > classified.at(j + 1).getDistance()) {
-                classified temp = classified.at(i);
-                classified.at(i) = classified.at(j + 1);
-                classified.at(j + 1) = temp;
+void Classify::sortDistances() {
+    for (size_t i = 0; i < stoi(knnDetails->getK()); i++) {
+        for (size_t j = i; j < knnDetails->getTrainVectors().size() - 1; j++) {
+            if (knnDetails->getTrainVectors().at(i).getDistance() > knnDetails->getTrainVectors().at(j + 1).getDistance()) {
+                StructVec temp = knnDetails->getTrainVectors().at(i);
+                knnDetails->getTrainVectors().at(i) = knnDetails->getTrainVectors().at(j + 1);
+                knnDetails->getTrainVectors().at(j + 1) = temp;
             }
         }
     }
 }
 
-string Classify::findName(int k,vector <structVec> *&classified) {
+string Classify::findName() {
     string name;
     map<string, int> kDistances;
     //add all the distances to the map
-    for (size_t i = 0; i < k; i++) {
-        name = classified.at(i).getName();
+    for (size_t i = 0; i < stoi(knnDetails->getK()); i++) {
+        name = knnDetails->getTrainVectors().at(i).getName();
         if (kDistances.empty()) { kDistances[name] = 1; }
         auto it = kDistances.find(name);
         if (it != kDistances.end()) {
@@ -192,7 +202,7 @@ string Classify::findName(int k,vector <structVec> *&classified) {
     }
 
     //find the max
-    string maxName="";
+    string maxName;
     int maxRepetitions = 0;
     map<string, int>::iterator itr;
     for (itr = kDistances.begin(); itr != kDistances.end(); ++itr) {
@@ -218,8 +228,8 @@ void Classify::execute() {
     ///////need to check
     for(auto &&v: knnDetails->getTestVectors() ){
         calcDis(dis,v.getVector());
-        sortDistances(knnDetails->getK(), knnDetails->getTrainVectors());
-        v.setName(findName(knnDetails->getK(), knnDetails->getTrainVectors()));
+        sortDistances();
+        v.setName(findName());
     }
     dio->write( "complete data classifying ");
     knnDetails->setIsClassified(true);
@@ -248,7 +258,7 @@ void Display::execute() {
 
     int counter = 1;
     string counterString;
-    strint output;
+    string output;
     for (auto &&v: knnDetails->getTestVectors()) {
         counterString = to_string(counter);
         output= counterString+"\t"+v.getName();

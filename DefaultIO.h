@@ -4,6 +4,7 @@
 
 #ifndef CLIENT_DEFAULTIO_H
 #define CLIENT_DEFAULTIO_H
+#include <string>
 using namespace std;
 
 
