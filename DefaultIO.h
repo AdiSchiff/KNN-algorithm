@@ -10,8 +10,8 @@ using namespace std;
 class DefaultIO {
 public:
     virtual string read() const;
-    virtual void write (string)const;
-    //~DefaultIO();
+    virtual void write (string) const;
+    ~DefaultIO();
 };
 
 
