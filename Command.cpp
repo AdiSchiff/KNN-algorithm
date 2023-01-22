@@ -222,6 +222,7 @@ void Classify::execute() {
         v.setName(findName(knnDetails->getK(), knnDetails->getTrainVectors()));
     }
     dio->write( "complete data classifying ");
+    knnDetails->setIsClassified(true);
     return;
 
 }
@@ -236,6 +237,15 @@ Display::Display(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
 }
 
 void Display::execute() {
+    if((knnDetails->getTestVectors()).empty() || (knnDetails->getTrainVectors()).empty()){
+        dio->write("please upload data");
+        return;
+    }
+    if(!knnDetails->getIsClassified()){
+        dio->write( "data the classify please");
+        return;
+    }
+
     int counter = 1;
     string counterString;
     strint output;
