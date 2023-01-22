@@ -3,22 +3,20 @@
 
 #include "DefaultIO.h"
 #include <sys/socket.h>
-#include <stdio.h>
-#include <string.h>
+#include <string>
+#include <cstring>
 
 using namespace std;
 
-class SocketIO: public DefaultIO 
-{
+class SocketIO: public DefaultIO {
 private:
     int clientSocket;
 public:
-    SocketIO(int socket);
+    explicit SocketIO(int socket);
+    string read() const override;
+    void write (string) const override;
     ~SocketIO();
-    string read() override;
-    void write(string s) override;
 };
-
 
 
 #endif 

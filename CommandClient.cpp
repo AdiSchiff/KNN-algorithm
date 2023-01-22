@@ -5,9 +5,8 @@
 #include "CommandClient.h"
 #include "iostream"
 #include <fstream>
-#include <string.h>
 
-CommandClient::CommandClient(DefaultIO *_dio) {}
+CommandClient::CommandClient(DefaultIO *_dio): dio(_dio) {}
 
 string CommandClient::getDescription() const {
     return this->description;
@@ -22,7 +21,7 @@ UploadData::UploadData(DefaultIO *&_dio): CommandClient(_dio) {
 
 void UploadData::execute() {
     int i;
-    string filePath = 0, output = 0, line = 0;
+    string filePath, output, line;
     fstream file;
     for(i=0; i<2; i++) {
         output = dio->read();
@@ -86,11 +85,10 @@ void Display::execute() {
     while(true){
         line = dio->read();
         cout << line << endl;
-        if(line.compare("Done.")){
+        if(line == "Done."){
             break;
         }
     }
-    return;
 }
 
 Display::~Display() {}
@@ -106,13 +104,12 @@ void Download::execute() {
     ofstream File("classified.csv");
     while(true){
         line = dio->read();
-        if(line.compare("Done.")){
+        if(line == "Done."){
             break;
         }
         File << line;
     }
     File.close();
-    return;
 }
 
 Download::~Download() {}

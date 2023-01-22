@@ -15,6 +15,4 @@ void StandardIO::write(string s) const {
     cout<< s <<endl;
 }
 
-/*StandardIO::~StandardIO() {
-
-}*/
+StandardIO::~StandardIO() {}
