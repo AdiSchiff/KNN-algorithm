@@ -135,19 +135,121 @@ Classify::Classify(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
     description = "3. classify data";
 }
 
+Classify ::Distance *whatDis(const char *dis) {
+    if (strcmp(dis, "AUC") == 0) {
+        auto *ed = new EuclideanDistance();
+        return ed;
+    }
+    if (strcmp(dis, "MAN") == 0) {
+        auto *mad = new ManhattanDistance();
+        return mad;
+    }
+    if (strcmp(dis, "CHB") == 0) {
+        auto *chd = new ChebyshevDistance();
+        return chd;
+    }
+    if (strcmp(dis, "CAN") == 0) {
+        auto *cad = new CanberraDistance();
+        return cad;
+    }
+    if (strcmp(dis, "MIN") == 0) {
+        auto *mid = new Minkowski();
+        return mid;
+    }
+    else {
+        return NULL;
+    }
+}
+
+void Classify::calcDis(Distance *dis, const vector<double> &vec) {
+    for (auto &&v: knnDetails->getTrainVectors()) {
+        v.setDistance(dis->distance(vec, v.getVector()));
+    }
+}
+void Classify::sortDistances(int k,vector <structVec> *&classified) {
+    for (size_t i = 0; i < k; i++) {
+        for (size_t j = i; j < classified.size() - 1; j++) {
+            if (classified.at(i).getDistance() > classified.at(j + 1).getDistance()) {
+                classified temp = classified.at(i);
+                classified.at(i) = classified.at(j + 1);
+                classified.at(j + 1) = temp;
+            }
+        }
+    }
+}
+
+string Classify::findName(int k,vector <structVec> *&classified) {
+    string name;
+    map<string, int> kDistances;
+    //add all the distances to the map
+    for (size_t i = 0; i < k; i++) {
+        name = classified.at(i).getName();
+        if (kDistances.empty()) { kDistances[name] = 1; }
+        auto it = kDistances.find(name);
+        if (it != kDistances.end()) {
+            it->second = it->second + 1;
+        } else { kDistances[name] = 1; }
+    }
+
+    //find the max
+    string maxName="";
+    int maxRepetitions = 0;
+    map<string, int>::iterator itr;
+    for (itr = kDistances.begin(); itr != kDistances.end(); ++itr) {
+        if (itr->second > maxRepetitions) {
+            maxRepetitions = itr->second;
+            maxName = itr->first;
+        }
+    }
+    kDistances.clear();
+    return maxName;
+}
+
 void Classify::execute() {
+
+    if((knnDetails->getTestVectors()).empty() || (knnDetails->getTrainVectors()).empty()){
+        dio->write("please upload data");
+        return;
+    }
+    char *distance = new char[(knnDetails->getDistanceMetric()).length() + 1];
+    strcpy(distance, (knnDetails->getDistanceMetric()).c_str());
+    auto *dis = whatDis(distance);
+
+    ///////need to check
+    for(auto &&v: knnDetails->getTestVectors() ){
+        calcDis(dis,v.getVector());
+        sortDistances(knnDetails->getK(), knnDetails->getTrainVectors());
+        v.setName(findName(knnDetails->getK(), knnDetails->getTrainVectors()));
+    }
+    dio->write( "complete data classifying ");
+    return;
 
 }
 
 Classify::~Classify() {}
 
+
+/*class display*/
+
 Display::Display(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
     description = "4. display results";
 }
 
-void Display::execute() {}
-
+void Display::execute() {
+    int counter = 1;
+    string counterString;
+    strint output;
+    for (auto &&v: knnDetails->getTestVectors()) {
+        counterString = to_string(counter);
+        output= counterString+"\t"+v.getName();
+        dio->write(output);
+        counter++;
+    }
+    dio->write("Done");
+}
 Display::~Display() {}
+
+
 
 Download::Download(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
     description = "5. download results";
