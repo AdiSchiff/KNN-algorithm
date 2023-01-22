@@ -7,7 +7,14 @@
 #include <string>
 #include "DefaultIO.h"
 #include "KnnDetails.h"
+#include "StructVec.h"
 #include "ReceiveVector.h"
+#include "CanberraDistance.h"
+#include "ChebyshevDistance.h"
+#include "ManhattanDistance.h"
+#include "Minkowski.h"
+#include "EuclideanDistance.h"
+#include <map>
 using namespace std;
 
 
@@ -55,8 +62,8 @@ public:
 
     Distance *whatDis(const char *dis);
     void calcDis(Distance *dis, const vector<double> &vec);
-    void sortDistances(int k,vector <structVec> *&classified);
-    string findName(int k,vector <structVec> *&classified);
+    void sortDistances();
+    string findName();
 };
 
 class Display: public Command{
