@@ -12,6 +12,7 @@ https://github.com/AdiSchiff/Idit-Adi.git
 class KnnDetails {
 private:
     string k;
+    bool isClassified=false;
     string distanceMetric;
     vector <StructVec> testVectors;
     vector <StructVec> trainVectors;
@@ -23,9 +24,11 @@ public:
     void setTestVectors(const StructVec&);
     void clearTrainVectors();
     void clearTestVectors();
+    void setIsClassified(bool answer);
 
     vector <StructVec> getTestVectors();
     vector <StructVec> getTrainVectors();
+    bool getIsClassified();
     string getK();
     string getDistanceMetric();
     ~KnnDetails();
