@@ -23,11 +23,11 @@ void KnnDetails:: setTestVectors(const StructVec& vector){ testVectors.push_back
 void KnnDetails:: setTrainVectors(const StructVec& vector){ trainVectors.push_back(vector);}
 void KnnDetails::clearTrainVectors() { trainVectors.clear();}
 void KnnDetails::clearTestVectors(){ testVectors.clear();}
-void KnnDetails::getIsClassified() { return isClassified;}
+bool KnnDetails::getIsClassified() { return isClassified;}
 
 vector <StructVec> KnnDetails::getTestVectors() {return testVectors;}
 vector <StructVec> KnnDetails::getTrainVectors(){ return trainVectors;}
-bool KnnDetails::setIsClassified(bool answer) {
+void KnnDetails::setIsClassified(bool answer) {
     isClassified=answer;
 }
 string KnnDetails:: getK(){return k;}
