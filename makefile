@@ -1,10 +1,11 @@
-OBJS	= Server.o CanberraDistance.o ChebyshevDistance.o Data.o Distance.o EuclideanDistance.o ManhattanDistance.o Minkowski.o ReceiveVector.o Print.o VectorArithmetic.o StructVec.o
-SOURCES	= Server.cpp CanberraDistance.cpp ChebyshevDistance.cpp Data.cpp Distance.cpp EuclideanDistance.cpp ManhattanDistance.cpp Minkowski.cpp ReceiveVector.cpp Print.cpp VectorArithmetic.cpp StructVec.cpp
-HEADER	= CanberraDistance.h ChebyshevDistance.h Data.h Distance.h EuclideanDistance.h ManhattanDistance.h Minkowski.h ReceiveVector.h Print.h VectorArithmetic.h StructVec.h
+OBJS	= Server.o CanberraDistance.o ChebyshevDistance.o Data.o Distance.o EuclideanDistance.o ManhattanDistance.o Minkowski.o ReceiveVector.o Print.o VectorArithmetic.o StructVec.o Cli.o Command.o CommandClient.o DefaultIO.o KnnDetails.o SocketIO.o StandardIO.o
+SOURCES	= Server.cpp CanberraDistance.cpp ChebyshevDistance.cpp Data.cpp Distance.cpp EuclideanDistance.cpp ManhattanDistance.cpp Minkowski.cpp ReceiveVector.cpp Print.cpp VectorArithmetic.cpp StructVec.cpp Cli.cpp Command.cpp CommandClient.cpp DefaultIO.cpp KnnDetails.cpp SocketIO.cpp StandardIO.cpp
+HEADER	= CanberraDistance.h ChebyshevDistance.h Data.h Distance.h EuclideanDistance.h ManhattanDistance.h Minkowski.h ReceiveVector.h Print.h VectorArithmetic.h StructVec.h Cli.h Command.h CommandClient.h DefaultIO.h KnnDetails.h SocketIO.h StandardIO.h
 OUTS	= server.out
 
-OBJC	= Client.o
-SOURCEC	= Client.cpp
+OBJC	= Client.o CommandClient.o DefaultIO.o SocketIO.o
+SOURCEC	= Client.cpp CommandClient.cpp DefaultIO.cpp SocketIO.cpp
+HEADERC = CommandClient.h DefaultIO.h SocketIO.h
 OUTC	= client.out
 CC	 = g++
 FLAGS	 = -g -c -w
@@ -55,6 +56,28 @@ StructVec.o: StructVec.cpp
 
 Client.o: Client.cpp
 	$(CC) $(FLAGS) Client.cpp -std=c++11
+
+Cli.o: Cli.cpp
+	$(CC) $(FLAGS) Cli.cpp -std=c++11
+
+Command.o: Command.cpp
+	$(CC) $(FLAGS) Command.cpp -std=c++11
+
+CommandClient.o: CommandClient.cpp
+	$(CC) $(FLAGS) CommandClient.cpp -std=c++11
+
+DefaultIO.o: DefaultIO.cpp
+	$(CC) $(FLAGS) DefaultIO.cpp -std=c++11
+
+KnnDetails.o: KnnDetails.cpp
+	$(CC) $(FLAGS) KnnDetails.cpp -std=c++11
+
+SocketIO.o: SocketIO.cpp
+	$(CC) $(FLAGS) SocketIO.cpp -std=c++11
+
+StandardIO.o: StandardIO.cpp
+	$(CC) $(FLAGS) StandardIO.cpp -std=c++11
+
 
 clean:
 	rm -f $(OBJS) $(OUTS)
