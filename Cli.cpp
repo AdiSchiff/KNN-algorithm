@@ -1,14 +1,29 @@
-//
-// Created by adi on 1/17/23.
-//
+/*
+Ex 4
+Idit Medizada 318879293
+Adi Schiff 212730675
+https://github.com/AdiSchiff/Idit-Adi.git
+*/
 
 #include <cstring>
 #include "Cli.h"
 #include "Command.h"
 #define SIZE_OF_MENU 7
 
+/******************
+* Function Name: Cli
+* Input: the defaultIO and the object that contains all the knn details
+* Output: no output
+* Function Operation: constructor.
+* ******************/
 Cli::Cli(DefaultIO *&_dio, KnnDetails *&_knn): dio(_dio), knnDetails(_knn) {}
 
+/******************
+* Function Name: start
+* Input: no input
+* Output: no output
+* Function Operation: receive a number at the menu from the user and call it's execute.
+* ******************/
 void Cli::start() {
     Command *ptr0 = new Welcome(dio, knnDetails);
     Command *ptr1 = new UploadData(dio, knnDetails);

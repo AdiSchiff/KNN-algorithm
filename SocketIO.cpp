@@ -7,10 +7,12 @@ https://github.com/AdiSchiff/Idit-Adi.git
 
 #include "SocketIO.h"
 
-/**
- * constructor
- * @param socket
- **/
+/******************
+* Function Name: SocketIO
+* Input: int socket
+* Output: no output
+* Function Operation: constructor.
+* ******************/
 SocketIO:: SocketIO(int socket): clientSocket(socket){}
 
 /******************

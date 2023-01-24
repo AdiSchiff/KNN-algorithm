@@ -389,7 +389,7 @@ void Display::execute() {
     }
     //if the user didn't classify the data
     if(!knnDetails->getIsClassified()){
-        dio->write( "data the classify please");
+        dio->write( "please classify the data");
         return;
     }
 

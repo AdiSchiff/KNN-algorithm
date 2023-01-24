@@ -7,8 +7,8 @@ OBJC	= Client.o CommandClient.o DefaultIO.o SocketIO.o
 SOURCEC	= Client.cpp CommandClient.cpp DefaultIO.cpp SocketIO.cpp
 HEADERC = CommandClient.h DefaultIO.h SocketIO.h
 OUTC	= client.out
-CC	 = g++
-FLAGS	 = -g -c -w -pthread
+CC	 = g++ -pthread
+FLAGS	 = -g -c -w
 
 
 all: $(OBJS) $(OBJC)
