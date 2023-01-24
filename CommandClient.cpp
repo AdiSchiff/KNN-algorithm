@@ -3,8 +3,9 @@
 //
 
 #include "CommandClient.h"
-#include "iostream"
-#include <fstream>
+#include <string>
+#include <sstream>
+
 
 CommandClient::CommandClient(DefaultIO *_dio): dio(_dio) {}
 
@@ -56,6 +57,9 @@ void AlgoSettings::execute() {
     s = dio->read();
     cout << s << endl;
     getline(cin, s);
+    if(s.empty()){
+        s = "empty";
+    }
     dio->write(s);
     s = dio->read();
     if(s != "finish"){
@@ -86,7 +90,7 @@ void Display::execute() {
     while(true){
         line = dio->read();
         cout << line << endl;
-        if(line == "Done."){
+        if(line == "Done." || line == "data the classify please" || line == "please upload data"){
             break;
         }
     }
@@ -98,19 +102,37 @@ Download::Download(DefaultIO *&_dio): CommandClient(_dio) {
     description = "5";
 }
 
+void Download::printToFile(string output, string filePath){
+    ofstream file;
+    file.open(filePath);
+    file<<output<<endl;
+    file.close();
+}
+
 void Download::execute() {
-    string filePath, line;
-    fstream file;
-    cin >> filePath;
-    ofstream File("classified.csv");
+    string filePath, line, output;
     while(true){
         line = dio->read();
+        if(line == "please upload data" || line == "data the classify please"){
+            cout<<line<<endl;
+            return;
+        }
         if(line == "Done."){
             break;
         }
-        File << line;
+        output += line;
+        output += '\n';
     }
-    File.close();
+    ofstream file;
+    getline(cin, filePath);
+    file.open(filePath);
+    if(!file){
+        cout<<"invalid input"<<endl;
+        return;
+    }
+    file.close();
+    thread downloadThread(&Download::printToFile, output, filePath);
+    downloadThread.detach();
 }
 
 Download::~Download() {}

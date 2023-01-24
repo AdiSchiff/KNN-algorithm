@@ -6,6 +6,10 @@
 #define CLIENT_COMMANDCLIENT_H
 #include <string>
 #include "DefaultIO.h"
+#include <iostream>
+#include <fstream>
+#include <thread>
+
 using namespace std;
 
 class CommandClient {
@@ -51,6 +55,7 @@ class Download: public CommandClient{
 public:
     Download(DefaultIO *&_dio);
     void execute() override;
+    void static printToFile(string output, string filePath);
     ~Download();
 };
 

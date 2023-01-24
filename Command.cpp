@@ -48,7 +48,7 @@ Welcome::Welcome(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn){
 /**
  * default implementation for execute of the command class
  **/
-void Welcome::execute() { return; }
+void Welcome::execute() { }
 
 /**
  * destructor.
@@ -160,7 +160,7 @@ AlgoSettings::AlgoSettings(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _
 bool AlgoSettings::isValidK(const string& k){
     char* _k = new char[k.length() + 1];
     strcpy(_k,k.c_str());
-    if(stoi(k) < 0 || !isdigit(*_k) ||stoi(k) > (knnDetails->getTestVectors())->size() ){ return false;}
+    if(!isdigit(*_k) || stoi(k) < 0 ||stoi(k) > (knnDetails->getTestVectors())->size() ){ return false;}
     return true;
 }
 
@@ -187,8 +187,7 @@ bool AlgoSettings::isValidDistance(const string& distance){
 void AlgoSettings::execute() {
     dio->write("The current KNN parameters are: K = " + knnDetails->getK() + ", distance metric = " + knnDetails->getDistanceMetric());
     string message = dio->read();
-    cout<<message<<endl;
-    if( message.empty()){
+    if( message == "empty"){
         dio->write("finish");
         return;
     }
@@ -200,6 +199,11 @@ void AlgoSettings::execute() {
         knnDetails->setK(k);
     } else {
         output = "invalid value for K ";
+    }
+    if(word.empty()){
+        output += "invalid value for metric";
+        dio->write(output);
+        return;
     }
     if(isValidDistance(word)){
         knnDetails->setDistanceMetric(word);
@@ -259,7 +263,7 @@ Distance *Classify::whatDis(const char *dis) {
         return mid;
     }
     else {
-        return nullptr;
+        return NULL;
     }
 }
 
@@ -427,7 +431,30 @@ Download::Download(DefaultIO *&_dio, KnnDetails *&_knn): Command(_dio, _knn) {
 * Output: no output
 * Function Operation: write into a file given from the user all the classifications of the testVectors.
 * ******************/
-void Download::execute() {}
+void Download::execute() {
+    //if the user didn't upload the data
+    if((knnDetails->getTestVectors())->empty() || (knnDetails->getTrainVectors())->empty()){
+        dio->write("please upload data");
+        return;
+    }
+    //if the user didn't classify the data
+    if(!knnDetails->getIsClassified()){
+        dio->write("data the classify please");
+        return;
+    }
+
+    int counter = 1;
+    string counterString;
+    string output;
+    int i;
+    for (i = 0; i<knnDetails->getTestVectors()->size(); i++){
+        counterString = to_string(counter);
+        output= counterString+"\t"+ knnDetails->getTestVectors()->at(i).getName();
+        dio->write(output);
+        counter++;
+    }
+    dio->write("Done.");
+}
 
 /**
  * destructor.
