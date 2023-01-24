@@ -1,6 +1,6 @@
-OBJS	= Server.o CanberraDistance.o ChebyshevDistance.o Data.o Distance.o EuclideanDistance.o ManhattanDistance.o Minkowski.o ReceiveVector.o Print.o VectorArithmetic.o StructVec.o Cli.o Command.o CommandClient.o DefaultIO.o KnnDetails.o SocketIO.o StandardIO.o
-SOURCES	= Server.cpp CanberraDistance.cpp ChebyshevDistance.cpp Data.cpp Distance.cpp EuclideanDistance.cpp ManhattanDistance.cpp Minkowski.cpp ReceiveVector.cpp Print.cpp VectorArithmetic.cpp StructVec.cpp Cli.cpp Command.cpp CommandClient.cpp DefaultIO.cpp KnnDetails.cpp SocketIO.cpp StandardIO.cpp
-HEADER	= CanberraDistance.h ChebyshevDistance.h Data.h Distance.h EuclideanDistance.h ManhattanDistance.h Minkowski.h ReceiveVector.h Print.h VectorArithmetic.h StructVec.h Cli.h Command.h CommandClient.h DefaultIO.h KnnDetails.h SocketIO.h StandardIO.h
+OBJS	= Server.o CanberraDistance.o ChebyshevDistance.o Data.o Distance.o EuclideanDistance.o ManhattanDistance.o Minkowski.o ReceiveVector.o Print.o VectorArithmetic.o StructVec.o Cli.o Command.o DefaultIO.o KnnDetails.o SocketIO.o StandardIO.o
+SOURCES	= Server.cpp CanberraDistance.cpp ChebyshevDistance.cpp Data.cpp Distance.cpp EuclideanDistance.cpp ManhattanDistance.cpp Minkowski.cpp ReceiveVector.cpp Print.cpp VectorArithmetic.cpp StructVec.cpp Cli.cpp Command.cpp DefaultIO.cpp KnnDetails.cpp SocketIO.cpp StandardIO.cpp
+HEADER	= CanberraDistance.h ChebyshevDistance.h Data.h Distance.h EuclideanDistance.h ManhattanDistance.h Minkowski.h ReceiveVector.h Print.h VectorArithmetic.h StructVec.h Cli.h Command.h DefaultIO.h KnnDetails.h SocketIO.h StandardIO.h
 OUTS	= server.out
 
 OBJC	= Client.o CommandClient.o DefaultIO.o SocketIO.o
@@ -8,7 +8,7 @@ SOURCEC	= Client.cpp CommandClient.cpp DefaultIO.cpp SocketIO.cpp
 HEADERC = CommandClient.h DefaultIO.h SocketIO.h
 OUTC	= client.out
 CC	 = g++
-FLAGS	 = -g -c -w
+FLAGS	 = -g -c -w -pthread
 
 
 all: $(OBJS) $(OBJC)
