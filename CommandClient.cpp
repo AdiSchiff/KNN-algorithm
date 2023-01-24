@@ -26,10 +26,11 @@ void UploadData::execute() {
     for(i=0; i<2; i++) {
         output = dio->read();
         cout << output << endl;
-        cin >> filePath;
+        getline(cin, filePath);
+        //cin >> filePath;
         file.open(filePath);
         if (!file.is_open()) {
-            cout << "Error! can't open file" << endl;
+            cout << "invalid input" << endl;
             dio->write("error");
             return;
         }
@@ -54,7 +55,7 @@ void AlgoSettings::execute() {
     string s;
     s = dio->read();
     cout << s << endl;
-    cin >> s;
+    getline(cin, s);
     dio->write(s);
     s = dio->read();
     if(s != "finish"){

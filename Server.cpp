@@ -12,49 +12,13 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "DefaultIO.h"
 #include "StandardIO.h"
 #include "Cli.h"
-#include "Distance.h"
+#include "SocketIO.h"
 #include "KnnDetails.h"
-#include "Minkowski.h"
-#include "EuclideanDistance.h"
-#include "ManhattanDistance.h"
-#include "ChebyshevDistance.h"
-#include "CanberraDistance.h"
 using namespace std;
-
-/******************
-Function Name:whatDis
-Input: string dis = the name of the distance function we need to use.
-Output: no output
-Function Operation: return a distance object according to the distance function given as an argument.
-******************/
-Distance *whatDis(const char *dis) {
-   if (strcmp(dis, "AUC") == 0) {
-       auto *ed = new EuclideanDistance();
-       return ed;
-   }
-   if (strcmp(dis, "MAN") == 0) {
-       auto *mad = new ManhattanDistance();
-       return mad;
-   }
-   if (strcmp(dis, "CHB") == 0) {
-       auto *chd = new ChebyshevDistance();
-       return chd;
-   }
-   if (strcmp(dis, "CAN") == 0) {
-       auto *cad = new CanberraDistance();
-       return cad;
-   }
-   if (strcmp(dis, "MIN") == 0) {
-       auto *mid = new Minkowski();
-       return mid;
-   }
-   else {
-       return NULL;
-   }
-}
 
 int main(int argc, char **argv)
 {
+
     const int server_port= stoi(argv[2]);
     //validation check for the port
     if (!isdigit(*argv[2]) || stoi(argv[2]) < 0 || stoi(argv[2]) > 65535) {
@@ -87,7 +51,7 @@ int main(int argc, char **argv)
         if (client_sock < 0) {
             perror("error accepting client");
         }
-        DefaultIO* dio = new StandardIO;
+        DefaultIO* dio = new SocketIO(client_sock);
         KnnDetails* knn = new KnnDetails();
         Cli *cli = new Cli(dio, knn);
         cli->start();

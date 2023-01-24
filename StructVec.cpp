@@ -57,7 +57,7 @@ void StructVec::setDistance(double dist) {
 * Output: string name
 * Function Operation:  return the name
 * ******************/
-const string &StructVec::getName() const {
+ string StructVec::getName() const {
     return name;
 }
 
@@ -72,5 +72,5 @@ double StructVec::getDistance() const {
 }
 
 void StructVec:: setName(string name1){
-    name=name1;
+    this->name=name1;
 }
