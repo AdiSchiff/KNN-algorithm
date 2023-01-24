@@ -11,7 +11,6 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <cstring>
 #include <iostream>
 #include "DefaultIO.h"
-#include "StandardIO.h"
 #include "SocketIO.h"
 #include "CommandClient.h"
 
@@ -45,24 +44,32 @@ int main(int argc, char **argv)
     CommandClient *ptr4 = new Download(dio);
     CommandClient *menu[5] = {ptr0, ptr1, ptr2, ptr3, ptr4};
     int i;
-    string s;
+    string s, input;
     while(true) {
         for (i = 0; i < 7; i++) {
             s = dio->read();
             cout << s << endl;
         }
-        getline(cin, s);
-        dio->write(s);
-        char *c = new char[s.length()+1];
-        strcpy(c,s.c_str());
+        getline(cin, input);
+        if(input.empty()){
+            input = "empty";
+        }
+        dio->write(input);
+        char *c = new char[input.length()+1];
+        strcpy(c,input.c_str());
         if(isdigit(*c)) {
-            i = stoi(s);
+            i = stoi(input);
             if (i > 0 && i < 6) {
                 menu[i - 1]->execute();
-            }
-            if (i == 8) {
+            } else if (i == 8) {
                 break;
+            } else {
+                input = dio->read();
+                cout<<input<<endl;
             }
+        } else {
+            input = dio->read();
+            cout << input << endl;
         }
     }
     close(sock);// if 8 close and break

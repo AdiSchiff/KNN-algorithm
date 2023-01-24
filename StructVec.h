@@ -1,5 +1,5 @@
 /*
-Ex 3
+Ex 4
 Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
@@ -21,7 +21,7 @@ private:
     double distance;
 public:
     StructVec(vector<double> vec1, string name1);
-    StructVec(vector<double> vec1);
+    explicit StructVec(vector<double> vec1);
     vector<double> getVector();
     string getName() const;
     double getDistance() const;

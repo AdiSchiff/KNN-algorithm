@@ -26,6 +26,10 @@ void Cli::start() {
             dio->write(menu[i]->getDescription());
         }
         s = dio->read();
+        if(s == "empty"){
+            dio->write(invalid);
+            continue;
+        }
         char *c = new char[s.length()+1];
         strcpy(c,s.c_str());
         if(!isdigit(*c)){

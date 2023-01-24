@@ -1,5 +1,5 @@
 /*
-Ex 3
+Ex 4
 Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
@@ -38,7 +38,7 @@ vector<double> ReceiveVector::transferStringToVector(string v) {
         }
         return vec;
     }
-    return vec = static_cast<vector<double>>(NULL);
+    return vec = static_cast<const vector<double>>(NULL);
 }
 
 /******************

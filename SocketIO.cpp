@@ -7,8 +7,18 @@ https://github.com/AdiSchiff/Idit-Adi.git
 
 #include "SocketIO.h"
 
+/**
+ * constructor
+ * @param socket
+ **/
 SocketIO:: SocketIO(int socket): clientSocket(socket){}
 
+/******************
+* Function Name: read
+* Input: no input
+* Output: a string
+* Function Operation: receive a string through a socket.
+* ******************/
 string SocketIO:: read() const {
     char buffer[4096];
     int expected_data_len = sizeof(buffer);
@@ -24,6 +34,12 @@ string SocketIO:: read() const {
     return string(buffer);
 }
 
+/******************
+* Function Name: write
+* Input: a string
+* Output: no output
+* Function Operation: send a string through a socket.
+* ******************/
 void SocketIO:: write(string s) const {
 
     char buffer[4096];

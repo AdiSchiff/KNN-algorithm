@@ -7,8 +7,10 @@ https://github.com/AdiSchiff/Idit-Adi.git
 
 #ifndef KNNDETAILS_H_
 #define KNNDETAILS_H_
-
+#include <utility>
+#include <vector>
 #include "StructVec.h"
+
 class KnnDetails {
 private:
     string k;
@@ -28,7 +30,7 @@ public:
 
     vector <StructVec>* getTestVectors();
     vector <StructVec>* getTrainVectors();
-    bool getIsClassified();
+    bool getIsClassified() const;
     string getK();
     string getDistanceMetric();
     ~KnnDetails();

@@ -1,5 +1,5 @@
 /*
-Ex 3
+Ex 4
 Idit Medizada 318879293
 Adi Schiff 212730675
 https://github.com/AdiSchiff/Idit-Adi.git
@@ -14,14 +14,32 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include "Cli.h"
 #include "SocketIO.h"
 #include "KnnDetails.h"
+#include <thread>
 using namespace std;
+
+/******************
+* Function Name: runThread
+* Input: the client's socket
+* Output: no output
+* Function Operation: runs the knn algorithm for a single client.
+* ******************/
+void runThread(int client_sock){
+    DefaultIO* dio = new SocketIO(client_sock);
+    KnnDetails* knn = new KnnDetails();
+    Cli *cli = new Cli(dio, knn);
+    cli->start();
+    close(client_sock);
+    delete dio;
+    delete knn;
+    delete cli;
+}
 
 int main(int argc, char **argv)
 {
 
-    const int server_port= stoi(argv[2]);
+    const int server_port= stoi(argv[1]);
     //validation check for the port
-    if (!isdigit(*argv[2]) || stoi(argv[2]) < 0 || stoi(argv[2]) > 65535) {
+    if (!isdigit(*argv[1]) || stoi(argv[1]) < 0 || stoi(argv[1]) > 65535) {
         cout<<"invalid port argument"<<endl;
         exit(0);
     }
@@ -39,7 +57,7 @@ int main(int argc, char **argv)
     {
         perror("error binding socket");
     }
-    if (listen(sock,5)<0)
+    if (listen(sock,10)<0)
     {
         perror("error listening to a socket");
     }
@@ -50,12 +68,10 @@ int main(int argc, char **argv)
         int client_sock = accept(sock, (struct sockaddr *) &client_sin, &addr_len);
         if (client_sock < 0) {
             perror("error accepting client");
+            break;
         }
-        DefaultIO* dio = new SocketIO(client_sock);
-        KnnDetails* knn = new KnnDetails();
-        Cli *cli = new Cli(dio, knn);
-        cli->start();
-        close(client_sock);
+        thread clientThread(&runThread, client_sock);
+        clientThread.detach();
     }
     close(sock);
     return 0;
