@@ -25,8 +25,8 @@ void KnnDetails::clearTrainVectors() { trainVectors.clear();}
 void KnnDetails::clearTestVectors(){ testVectors.clear();}
 bool KnnDetails::getIsClassified() { return isClassified;}
 
-vector <StructVec> KnnDetails::getTestVectors() {return testVectors;}
-vector <StructVec> KnnDetails::getTrainVectors(){ return trainVectors;}
+vector <StructVec>* KnnDetails::getTestVectors() {return &testVectors;}
+vector <StructVec>* KnnDetails::getTrainVectors(){ return &trainVectors;}
 void KnnDetails::setIsClassified(bool answer) {
     isClassified=answer;
 }

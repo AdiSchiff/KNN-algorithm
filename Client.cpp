@@ -12,6 +12,7 @@ https://github.com/AdiSchiff/Idit-Adi.git
 #include <iostream>
 #include "DefaultIO.h"
 #include "StandardIO.h"
+#include "SocketIO.h"
 #include "CommandClient.h"
 
 using namespace std;
@@ -36,12 +37,12 @@ int main(int argc, char **argv)
         return 0;
     }
 
-    DefaultIO* dio = new StandardIO;
-    UploadData *ptr0 = new UploadData(dio);
-    AlgoSettings *ptr1 = new AlgoSettings(dio);
-    Classify *ptr2 = new Classify(dio);
-    Display *ptr3 = new Display(dio);
-    Download *ptr4 = new Download(dio);
+    DefaultIO* dio = new SocketIO(sock);
+    CommandClient *ptr0 = new UploadData(dio);
+    CommandClient *ptr1 = new AlgoSettings(dio);
+    CommandClient *ptr2 = new Classify(dio);
+    CommandClient *ptr3 = new Display(dio);
+    CommandClient *ptr4 = new Download(dio);
     CommandClient *menu[5] = {ptr0, ptr1, ptr2, ptr3, ptr4};
     int i;
     string s;
@@ -50,7 +51,7 @@ int main(int argc, char **argv)
             s = dio->read();
             cout << s << endl;
         }
-        cin >> s;
+        getline(cin, s);
         dio->write(s);
         char *c = new char[s.length()+1];
         strcpy(c,s.c_str());
