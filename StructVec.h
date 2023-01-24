@@ -17,13 +17,13 @@ using namespace std;
 class StructVec {
 private:
     vector<double> vec;
-    string name;
+    string name="name";
     double distance;
 public:
     StructVec(vector<double> vec1, string name1);
     StructVec(vector<double> vec1);
     vector<double> getVector();
-    const string &getName() const;
+    string getName() const;
     double getDistance() const;
     void setDistance(double dist);
     void setName(string name1);

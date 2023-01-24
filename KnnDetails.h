@@ -26,8 +26,8 @@ public:
     void clearTestVectors();
     void setIsClassified(bool answer);
 
-    vector <StructVec> getTestVectors();
-    vector <StructVec> getTrainVectors();
+    vector <StructVec>* getTestVectors();
+    vector <StructVec>* getTrainVectors();
     bool getIsClassified();
     string getK();
     string getDistanceMetric();
