@@ -54,10 +54,10 @@ for example: 127.0.0.1 localhost
 open 2 terminals:    
 1. Server   
 `make`    
-`./server.out  filePath portNumber` (for example ./Server.out  datasets/iris/iris_classified.csv 12345).   
+`./server.out  filePath portNumber` (for example ./server.out  datasets/iris/iris_classified.csv 12345).   
 2. Client   
 `make`    
-`./client.out portNumber ipNumber` (for example ./Client.out 127.0.0.1 12345).        
+`./client.out ipNumber portNumber` (for example ./client.out 127.0.0.1 12345).        
  
 k= number of neighbors.   
 file= file classified vectors (relative/ absolut).   
